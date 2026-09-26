@@ -1,0 +1,22 @@
+.psy-hero-bg {
+  background-image: url("../assets/img/hero-kaleidoscope.jpg");
+  filter: hue-rotate(25deg) saturate(1.15);
+  opacity: 0.72;
+}
+
+.psy-release-card {
+  max-width: 680px;
+  margin: 3rem auto 0;
+  text-align: left;
+  border-color: var(--cyan-dim);
+}
+
+.psy-release-card .download-actions {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .psy-release-card {
+    padding: 1.5rem;
+  }
+}

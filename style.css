@@ -219,8 +219,8 @@ button {
   transition: all 0.3s ease;
 }
 
-/* Mobile navigation */
-@media (max-width: 767px) {
+/* Compact navigation */
+@media (max-width: 900px) {
   .nav-toggle {
     display: flex;
   }
