@@ -1,7 +1,7 @@
 .psy-hero-bg {
-  background-image: url("../assets/img/hero-kaleidoscope.jpg");
-  filter: hue-rotate(25deg) saturate(1.15);
-  opacity: 0.72;
+  background-image: url("hero.jpg");
+  filter: brightness(0.65);
+  opacity: 0.9;
 }
 
 .psy-release-card {
@@ -13,6 +13,10 @@
 
 .psy-release-card .download-actions {
   margin-top: 0.5rem;
+}
+
+.psy-release-card code {
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 767px) {
