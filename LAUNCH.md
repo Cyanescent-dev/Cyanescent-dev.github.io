@@ -64,7 +64,11 @@ python3 tools/set-checkout-url.py https://cyanescent.lemonsqueezy.com/buy/<uuid>
 For local testing with a test-mode link, use `--test` instead. The launch check
 refuses to pass while a test link is present. Undo with `--reset`.
 
-Once the refund wording and support contact are approved, edit `support.html`:
+Support route (owner decision, 24 Oct 2026): **GitHub Issues only**. The Support
+page already says so and warns that issues are public. The refund wording stays
+gated: it needs a *private* way for buyers to request a refund (e.g. the store
+contact Lemon Squeezy shows on receipts), because order details must not be
+posted in public issues. Once that route and the wording are approved, edit `support.html`:
 add the contact, then delete the `pending-note` paragraph and the
 `data-launch-pending="refund-policy"` attribute.
 
