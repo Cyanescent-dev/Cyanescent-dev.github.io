@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 LAUNCH = "--launch" in sys.argv
 PAGES = sorted(
     p for p in ROOT.rglob("*.html")
-    if ".git" not in p.parts and "_source" not in p.parts
+    if not {".git", "_source", "_launch"} & set(p.parts)
 )
 MAX_IMAGE_BYTES = 400_000
 
@@ -133,6 +133,9 @@ FACTS = [
     "$5", "$15", "$30", "up to 1080p", "up to 4K", "macOS 12 or later", "macOS 14.2",
     "Not yet available to buy", "e62bbb934a209f318cd49e318f6840e9e82f5fc15b26d8424fd67e80729efcc7",
     "7,643,421 bytes", "Buy once.", "Create forever.",
+    "3619a69083bd35249cb1ae4e8a6041c20a29c281e8baed4264bef4904d384370", "20,310,870 bytes",
+    "Launch price $5 — regular price $15", "Lemon Squeezy", "Coming soon",
+    "Milkrunner", "Psy-Roller",
 ]
 for fact in FACTS:
     if fact.lower() not in index.lower():
@@ -140,6 +143,20 @@ for fact in FACTS:
 for wrong in ("Pro Video — $5", "Get Pro Video", "Buy Pro Video", "Fungal Edition download"):
     if wrong.lower() in index.lower():
         errors.append(f"index.html: unexpected text {wrong!r}")
+
+# 5b. Rejected or obsolete imagery must not return, and companion downloads must stay
+raw_index = (ROOT / "index.html").read_text(encoding="utf-8")
+for rejected in ("higher-dimensional-jellyfish", "smuggler-run", "kleinian-coral-cathedral",
+                 "assets/img/", "fungal-preset"):
+    if rejected in raw_index:
+        errors.append(f"index.html: rejected/obsolete image referenced: {rejected}")
+for required in (
+    "https://github.com/Cyanescent-dev/milkrunner/releases/download/milk-runner-visuals/Milk.Runner.Visualizer.zip",
+    "https://github.com/Cyanescent-dev/Cyanescent-dev.github.io/releases/download/psy-roller-v1.0.1/Psy-Roller-1.0.1-VST3.zip",
+    'href="psy-roller/"',
+):
+    if required not in raw_index:
+        errors.append(f"index.html: companion product link missing: {required}")
 
 # 6. Launch-pending controls
 for path, p in parsed.items():
