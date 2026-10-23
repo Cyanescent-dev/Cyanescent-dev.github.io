@@ -1,432 +1,681 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Cyanescent Player — Audio-Reactive Visualiser for macOS</title>
-  <meta name="description" content="A native macOS music player and audio-reactive visualiser for immersive generative worlds, adaptive preset journeys, and high-quality video creation. Version 0.9 Preview, plus a free Fungal Edition with 23 new fungi and slime mould presets.">
+  <title>Cyanescent Player 1.0 — Music-responsive visuals for macOS</title>
+  <meta name="description" content="Cyanescent Player turns your music into living, psychedelic visual worlds. Play, perform live and export music videos on macOS. Free download; Pro $5 introductory price. DRM-free: buy once, create forever.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Cyanescent Player — Audio-Reactive Visualiser for macOS">
-  <meta property="og:description" content="A music player and audio-reactive visualiser for immersive generative worlds, adaptive preset journeys, and high-quality video creation.">
+  <meta property="og:title" content="Cyanescent Player 1.0 — Music-responsive visuals for macOS">
+  <meta property="og:description" content="Living visual worlds shaped by your music. Play, perform live and export up to 4K. No subscription, no DRM, no activation.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cyanescent-dev.github.io/">
-  <meta property="og:image" content="https://cyanescent-dev.github.io/assets/img/hero-kaleidoscope.jpg">
-  <meta property="og:image:width" content="2400">
-  <meta property="og:image:height" content="1500">
-
-  <!-- Twitter Card -->
+  <meta property="og:image" content="https://cyanescent-dev.github.io/assets/v1/impossible-apertures-1600.jpg">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="900">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cyanescent Player">
-  <meta name="twitter:description" content="Audio-reactive visualiser and music player for macOS.">
 
-  <!-- Theme & Canonical -->
-  <meta name="theme-color" content="#0a0c12">
+  <meta name="theme-color" content="#06070d">
   <link rel="canonical" href="https://cyanescent-dev.github.io/">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/v1/icon-64.png">
+  <link rel="apple-touch-icon" href="assets/v1/icon-180.png">
 
-  <!-- PLACEHOLDER: Replace with actual favicon files -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◉</text></svg>">
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="v1.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-
-  <!-- Skip to content -->
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       NAVIGATION
-  ═══════════════════════════════════════════════════════════════ -->
-  <header class="site-nav" role="banner">
-    <nav class="nav-inner" aria-label="Primary navigation">
-      <a href="#hero" class="nav-brand">Cyanescent Player</a>
-
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
-        <span></span>
-        <span></span>
-        <span></span>
+  <header class="nav">
+    <nav class="wrap nav-inner" aria-label="Primary">
+      <a href="./" class="brand"><img src="assets/v1/icon-64.png" alt="" width="30" height="30">Cyanescent</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="visually-hidden">Menu</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
-
-      <ul id="nav-links" class="nav-links" role="list">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#fungal-edition">Fungal Edition</a></li>
-        <li><a href="#preview">Preview</a></li>
-        <li><a href="#download">Download</a></li>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#visuals">Visuals</a></li>
+        <li><a href="#features">How it works</a></li>
+        <li><a href="#editions">Editions</a></li>
+        <li><a href="#licence">Licence</a></li>
+        <li><a href="#requirements">Requirements</a></li>
         <li><a href="psy-roller/">Psy-Roller</a></li>
-        <li><a href="https://github.com/Cyanescent-dev/Cyanescent-Player" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+        <li><a href="#download" class="btn btn-primary btn-sm">Download Free</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="hero" class="hero">
-      <div class="hero-bg" style="background-image: url('assets/img/hero-kaleidoscope.jpg');" role="img" aria-label="Radiant kaleidoscopic visual generated by Cyanescent Player"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-
-      <div class="hero-content">
-        <h1 class="hero-title">Cyanescent Player</h1>
-        <p class="hero-subtitle">
-          A music player and audio-reactive visualiser for immersive generative worlds, adaptive preset journeys, and high-quality video creation.
-        </p>
-        <div class="hero-badge-row">
-          <span class="hero-badge">0.9 Preview · macOS</span>
-          <a href="#fungal-edition" class="hero-badge hero-badge--accent">New · 0.9 Fungal Edition · Free</a>
-        </div>
-        <div class="hero-actions">
-          <a href="https://github.com/Cyanescent-dev/Cyanescent-Player/releases/download/v0.9preview/Cyanescent-Player-0.9-Preview-macOS.zip" class="btn btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download 0.9 Preview
-          </a>
-          <a href="#fungal-edition" class="btn btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Get the Fungal Edition
-          </a>
-          <a href="https://github.com/Cyanescent-dev/Cyanescent-Player" class="btn btn-secondary" rel="noopener noreferrer" target="_blank">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            View on GitHub
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-scroll" aria-hidden="true">
-        <span>↓</span>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════
-         VISUAL SHOWCASE
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="gallery" class="section">
-      <div class="section-inner">
-        <p class="section-label reveal">Visual Worlds</p>
-        <h2 class="section-title reveal">Every track opens a different world</h2>
-        <p class="section-desc reveal">
-          GPU-driven visual presets that breathe with the music — organic, fractal, spectral, and strange.
-        </p>
-      </div>
-
-      <div class="gallery-grid reveal-stagger">
-
-        <!-- Row 1: featured wide + portrait-ish -->
-        <figure class="gallery-item reveal" style="grid-column: 1 / 8;">
-          <img src="assets/img/gallery-organic-deep.jpg"
-               alt="Bioluminescent deep-ocean organisms rendered by Cyanescent Player — translucent cyan forms floating in dark space"
-               loading="lazy" width="1600" height="1081">
-          <figcaption>Deep bioluminescent organisms breathing with bass frequencies</figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" style="grid-column: 8 / 13;">
-          <img src="assets/img/gallery-spectral-nebula.jpg"
-               alt="Full-spectrum nebula visualisation — rainbow colours radiating from a central rift"
-               loading="lazy" width="1600" height="995">
-          <figcaption>Spectral nebula — full colour range driven by harmonic analysis</figcaption>
-        </figure>
-
-        <!-- Row 2: side by side -->
-        <figure class="gallery-item reveal" style="grid-column: 1 / 6;">
-          <img src="assets/img/gallery-neon-contours.jpg"
-               alt="Vivid yellow and magenta neon contour lines swirling on black — high energy generative visual"
-               loading="lazy" width="1600" height="1010">
-          <figcaption>Neon contour fields reacting to transient energy</figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" style="grid-column: 6 / 13;">
-          <img src="assets/img/gallery-fractal-golden.jpg"
-               alt="Fractal patterns that evolve with organic symmetry in time with the music"
-               loading="lazy" width="1600" height="1095">
-          <figcaption>Golden fractal forms — complex symmetry reacting to rhythm</figcaption>
-        </figure>
-
-        <!-- Row 3: full bleed panoramic -->
-        <figure class="gallery-item reveal" style="grid-column: 1 / 13;">
-          <img src="assets/img/gallery-butterfly-swarm.jpg"
-               alt="Luminous butterfly-like forms in blue and cyan with warm golden accents, swirling in deep space"
-               loading="lazy" width="1600" height="1081">
-          <figcaption>Bioluminescent swarm — geometry and light responding to musical structure</figcaption>
-        </figure>
-
-        <!-- Row 4: asymmetric -->
-        <figure class="gallery-item reveal" style="grid-column: 1 / 5;">
-          <img src="assets/img/gallery-fractal-emerald.jpg"
-               alt="Fractal emerald diamond shape with cyan edges radiating green energy"
-               loading="lazy" width="1600" height="1068">
-          <figcaption>Fractal symmetry — sacred geometry from audio</figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" style="grid-column: 5 / 13;">
-          <img src="assets/img/hero-kaleidoscope.jpg"
-               alt="Intricate kaleidoscopic pattern with radial symmetry in cyan, gold, and violet"
-               loading="lazy" width="2400" height="1500">
-          <figcaption>Radial kaleidoscope — complex pattern evolution across a track</figcaption>
-        </figure>
-        
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════
-         CORE FEATURES
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="features" class="section">
-      <div class="section-inner">
-
-        <p class="section-label reveal">Capabilities</p>
-        <h2 class="section-title reveal">What the 0.9 Preview includes</h2>
-
-        <!-- Feature Block 1: Generative Visual Engine + Player -->
-        <div class="features-block reveal">
-          <div class="features-text">
-            <h3>Generative Visual Engine</h3>
-            <p>Load a track. The visuals respond — not as a waveform overlay, but as a living world shaped by rhythm, energy, and harmonic structure.</p>
-            <ul class="feature-list">
-              <li>Audio-reactive generative visual presets driven by GPU shaders</li>
-              <li>Adaptive visual journeys that evolve with the music</li>
-              <li>Smooth crossfade transitions between presets</li>
-              <li>Preset playlists and shuffle modes for continuous exploration</li>
-              <li>Music playback with real-time waveform and energy analysis</li>
-              <li>A curated selection of Cyanescent visual presets</li>
-            </ul>
-          </div>
-          <div class="features-media">
-            <img src="assets/img/player-gui.jpg"
-                 alt="Cyanescent Player interface showing waveform display with energy analysis, playlist, and visual settings panel"
-                 loading="lazy" width="1600" height="1120">
-          </div>
-        </div>
-
-        <!-- Feature Block 2: Scion Modes (standalone, no image) -->
-        <div class="features-standalone reveal">
-          <h3>Performance &amp; Preset Management</h3>
-          <p>Import, organise, perform live or make music videos with the presets. Switch rendering modes to match your system and intent.</p>
-          <div class="mode-tags">
-            <span class="mode-tag">Media Player</span>
-            <span class="mode-tag">Supports Live Input (Blackhole)</span>
-            <span class="mode-tag">Scion Performance Mode</span>
-            <span class="mode-tag">Scion Synthesis Mode</span>
-            <span class="mode-tag">Standard Quality</span>
-            <span class="mode-tag">High Quality</span>
-            <span class="mode-tag">Fullscreen</span>
-            <span class="mode-tag">No Watermarks</span>
-            <span class="mode-tag">No Ads</span>
-          </div>
-        </div>
-
-        <!-- Feature Block 3: Video Export (reversed layout) -->
-        <div class="features-block reversed reveal">
-          <div class="features-text">
-            <h3>Video Export</h3>
-            <p>Turn a track into a music video. Build a custom transition timeline, preview it in real time, then export at up to 1080p with 60 fps and H.264 encoding.</p>
-            <ul class="feature-list">
-              <li>Export music videos at resolutions up to 1920×1080</li>
-              <li>Custom transition timeline — place cue points, assign presets, choose transitions</li>
-              <li>Automatic and manual transition modes</li>
-              <li>Low-resolution draft preview with audio before committing to export</li>
-              <li>Video transitions with curated transition clips</li>
-              <li>No Watermarks</li>
-            </ul>
-          </div>
-          <div class="features-media">
-            <img src="assets/img/video-export-preview.jpg"
-                 alt="Cyanescent Player video export interface showing custom transition timeline with preset assignments, waveform, and live draft preview"
-                 loading="lazy" width="1600" height="1192">
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════
-         PROMOTIONAL VIDEO
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="video" class="section">
-      <div class="section-inner section-centered">
-        <p class="section-label reveal">Film</p>
-        <h2 class="section-title reveal">See it in motion</h2>
-      </div>
-
-      <div class="video-container reveal">
-        <video class="video-poster"
-               poster="assets/img/video-poster.jpg"
-               controls
-               preload="metadata"
-               playsinline
-               width="1280" height="720">
-          <source src="https://raw.githubusercontent.com/Cyanescent-dev/Cyanescent-Player/main/assets/promoplanetarps2-web-720p30-under-25mb.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════
-         PREVIEW STATUS
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="preview" class="section section--alt">
-      <div class="section-inner">
-        <div class="preview-card reveal">
-          <p class="section-label">Public Preview</p>
-          <h3>Version 0.9 is a preview release</h3>
-          <p>
-            Cyanescent Player is under active development. The 0.9 Preview is a working release for early exploration — not a finished product.
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-aura" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Cyanescent Player 1.0 · for macOS</p>
+          <h1 id="hero-title" class="hero-title">
+            <span>Your music,</span>
+            <span class="spectrum-text">made visible.</span>
+          </h1>
+          <p class="hero-lede">
+            Living, psychedelic visual worlds that listen to every beat, build and drop. Play your library, perform live, and export finished music videos.
           </p>
-          <p>Things to know:</p>
-          <ul class="preview-list">
-            <li>The software is still being refined — expect occasional rough edges</li>
-            <li>Feedback and bug reports are genuinely welcome</li>
-            <li>Some features may have preview-build limitations</li>
-            <li>This release is for macOS — the app is signed and notarised by Apple, so it opens normally with no extra steps</li>
+          <div class="hero-actions">
+            <a href="#download" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Free
+            </a>
+            <a href="#editions" class="btn btn-pro">Get Pro — $5</a>
+          </div>
+          <ul class="hero-meta">
+            <li>macOS 12 or later</li>
+            <li>Apple Silicon &amp; Intel</li>
+            <li>No subscription · No DRM</li>
           </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════
-         FUNGAL EDITION
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="fungal-edition" class="section section--alt">
-      <div class="section-inner section-centered">
-        <p class="section-label reveal">Special Edition · Free</p>
-        <h2 class="section-title reveal">Cyanescent Player 0.9 — Fungal Edition</h2>
-        <p class="section-desc reveal section-desc--centered">
-          A free special edition of Cyanescent Player, built around fungi and slime mould. It includes every preset from the standard 0.9 Preview, plus 23 new fungal presets — spore blooms, mycelial growth, and bioluminescent mushroom fields.
-        </p>
-      </div>
-
-      <div class="gallery-grid fungal-gallery-grid reveal-stagger">
-        <figure class="gallery-item reveal">
-          <img src="assets/img/fungal-preset-crimson-hatchling.jpg"
-               alt="A crimson, spore-pitted fungal growth unfurling from a cracked egg-like pod on a misty forest floor"
-               loading="lazy" width="2934" height="1850">
-          <figcaption>Crimson Hatchling — a fungal growth splitting open its spore pod</figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal">
-          <img src="assets/img/fungal-preset-aurora-grove.jpg"
-               alt="A dense grove of toadstool mushrooms on a dark forest floor beneath a teal and violet aurora"
-               loading="lazy" width="2932" height="1850">
-          <figcaption>Aurora Grove — a toadstool forest beneath a shifting aurora</figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal">
-          <img src="assets/img/fungal-preset-bioluminescent-cluster.jpg"
-               alt="A cluster of small mushrooms glowing bright green, lighting up the forest floor at night"
-               loading="lazy" width="578" height="434">
-          <figcaption>Bioluminescent Cluster — glowing mushrooms lighting the dark</figcaption>
-        </figure>
-      </div>
-
-      <div class="section-inner section-centered">
-        <div class="download-actions reveal fungal-download-actions">
-          <a href="https://github.com/Cyanescent-dev/Cyanescent-Player/releases/download/V0.9-Fungal-Edition/Cyanescent-Player-Fungal-0.9.0-macOS.zip" class="btn btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download 0.9 Fungal Edition
-          </a>
-          <a href="https://github.com/Cyanescent-dev/Cyanescent-Player/releases/tag/V0.9-Fungal-Edition" class="btn btn-secondary" rel="noopener noreferrer" target="_blank">
-            GitHub Release
-          </a>
+        <div class="hero-visual">
+          <div class="portal">
+            <picture>
+              <source type="image/avif" srcset="assets/v1/cosmic-eye-480.avif 480w, assets/v1/cosmic-eye-960.avif 960w" sizes="(max-width: 860px) 68vw, 520px">
+              <img src="assets/v1/cosmic-eye-960.jpg" srcset="assets/v1/cosmic-eye-480.jpg 480w, assets/v1/cosmic-eye-960.jpg 960w" sizes="(max-width: 860px) 68vw, 520px" width="960" height="960" alt="The Cosmic Eye, Cyanescent Player's application icon: a neon eye opening onto a swirling cosmic portal" fetchpriority="high">
+            </picture>
+          </div>
+          <p class="portal-caption">The Cosmic Eye — Cyanescent Player’s icon</p>
         </div>
-        <p class="download-meta reveal">
-          Free · macOS only · Standard presets + 23 new fungi &amp; slime mould presets · Signed &amp; notarised
+      </div>
+    </section>
+
+    <!-- ═══ GALLERY ═══ -->
+    <section id="visuals" class="section" aria-labelledby="visuals-title">
+      <div class="wrap">
+        <div class="center">
+          <p class="eyebrow reveal">Visual worlds</p>
+          <h2 id="visuals-title" class="section-title reveal">Every track opens a different world</h2>
+          <p class="section-lede reveal">
+            Fractal cathedrals, bioluminescent creatures, impossible geometry and neon cities: real-time GPU worlds that breathe, pulse and transform with the music.
+          </p>
+        </div>
+
+        <div class="gallery" data-gallery>
+          <figure class="shot shot--wide reveal">
+            <button type="button" data-full="assets/v1/impossible-apertures-1600.jpg" data-title="Shadow Geometry: Impossible Apertures">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/impossible-apertures-800.avif 800w, assets/v1/impossible-apertures-1600.avif 1600w" sizes="(max-width: 860px) 100vw, 800px">
+                <img src="assets/v1/impossible-apertures-1600.jpg" srcset="assets/v1/impossible-apertures-800.jpg 800w, assets/v1/impossible-apertures-1600.jpg 1600w" sizes="(max-width: 860px) 100vw, 800px" width="1600" height="900" loading="lazy" alt="Shadow Geometry: Impossible Apertures — a glowing aperture at the centre of a tunnel of golden oval openings">
+              </picture>
+            </button>
+            <figcaption>Shadow Geometry: Impossible Apertures <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot reveal">
+            <button type="button" data-full="assets/v1/feather-star-ascension-1600.jpg" data-title="Feather Star Ascension">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/feather-star-ascension-800.avif 800w, assets/v1/feather-star-ascension-1600.avif 1223w" sizes="(max-width: 860px) 100vw, 400px">
+                <img src="assets/v1/feather-star-ascension-800.jpg" srcset="assets/v1/feather-star-ascension-800.jpg 800w, assets/v1/feather-star-ascension-1600.jpg 1223w" sizes="(max-width: 860px) 100vw, 400px" width="800" height="450" loading="lazy" alt="Feather Star Ascension — a radiant rainbow star of feathered arms against a dark ocean">
+              </picture>
+            </button>
+            <figcaption>Feather Star Ascension <span class="chip chip--free">Free &amp; Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot reveal">
+            <button type="button" data-full="assets/v1/higher-dimensional-jellyfish-1600.jpg" data-title="Higher-Dimensional Jellyfish">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/higher-dimensional-jellyfish-800.avif 800w, assets/v1/higher-dimensional-jellyfish-1600.avif 1600w" sizes="(max-width: 860px) 100vw, 400px">
+                <img src="assets/v1/higher-dimensional-jellyfish-800.jpg" srcset="assets/v1/higher-dimensional-jellyfish-800.jpg 800w, assets/v1/higher-dimensional-jellyfish-1600.jpg 1600w" sizes="(max-width: 860px) 100vw, 400px" width="800" height="450" loading="lazy" alt="Higher-Dimensional Jellyfish — a translucent blue and pink jellyfish drifting in deep space">
+              </picture>
+            </button>
+            <figcaption>Higher-Dimensional Jellyfish <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot reveal">
+            <button type="button" data-full="assets/v1/smuggler-run-1600.jpg" data-title="Smuggler Run Through The Ninth Dimension">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/smuggler-run-800.avif 800w, assets/v1/smuggler-run-1600.avif 1223w" sizes="(max-width: 860px) 100vw, 400px">
+                <img src="assets/v1/smuggler-run-800.jpg" srcset="assets/v1/smuggler-run-800.jpg 800w, assets/v1/smuggler-run-1600.jpg 1223w" sizes="(max-width: 860px) 100vw, 400px" width="800" height="450" loading="lazy" alt="Smuggler Run Through The Ninth Dimension — a cockpit window looking out on banded planets and a violet nebula">
+              </picture>
+            </button>
+            <figcaption>Smuggler Run Through The Ninth Dimension <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot shot--wide reveal">
+            <button type="button" data-full="assets/v1/quantum-circuit-city-1600.jpg" data-title="Quantum Circuit City">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/quantum-circuit-city-800.avif 800w, assets/v1/quantum-circuit-city-1600.avif 1600w" sizes="(max-width: 860px) 100vw, 800px">
+                <img src="assets/v1/quantum-circuit-city-1600.jpg" srcset="assets/v1/quantum-circuit-city-800.jpg 800w, assets/v1/quantum-circuit-city-1600.jpg 1600w" sizes="(max-width: 860px) 100vw, 800px" width="1600" height="900" loading="lazy" alt="Quantum Circuit City — a neon city of glowing towers and orbiting rings under a violet sky">
+              </picture>
+            </button>
+            <figcaption>Quantum Circuit City <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot shot--half reveal">
+            <button type="button" data-full="assets/v1/hypergeometry-dimensional-emergence-1600.jpg" data-title="Hypergeometry Engine: Dimensional Emergence">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/hypergeometry-dimensional-emergence-800.avif 800w, assets/v1/hypergeometry-dimensional-emergence-1600.avif 1600w" sizes="(max-width: 860px) 100vw, 600px">
+                <img src="assets/v1/hypergeometry-dimensional-emergence-800.jpg" srcset="assets/v1/hypergeometry-dimensional-emergence-800.jpg 800w, assets/v1/hypergeometry-dimensional-emergence-1600.jpg 1600w" sizes="(max-width: 860px) 100vw, 600px" width="800" height="450" loading="lazy" alt="Hypergeometry Engine: Dimensional Emergence — a glowing wireframe polytope with a violet interior">
+              </picture>
+            </button>
+            <figcaption>Hypergeometry Engine: Dimensional Emergence <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot shot--half reveal">
+            <button type="button" data-full="assets/v1/topological-knot-reactor-1600.jpg" data-title="Topological Knot Reactor">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/topological-knot-reactor-800.avif 800w, assets/v1/topological-knot-reactor-1600.avif 1223w" sizes="(max-width: 860px) 100vw, 600px">
+                <img src="assets/v1/topological-knot-reactor-800.jpg" srcset="assets/v1/topological-knot-reactor-800.jpg 800w, assets/v1/topological-knot-reactor-1600.jpg 1223w" sizes="(max-width: 860px) 100vw, 600px" width="800" height="450" loading="lazy" alt="Topological Knot Reactor — luminous pink, gold and green ribbons twisting through a knot">
+              </picture>
+            </button>
+            <figcaption>Topological Knot Reactor <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot reveal">
+            <button type="button" data-full="assets/v1/clifford-metamorphosis-1600.jpg" data-title="Clifford Phase Space: Metamorphosis">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/clifford-metamorphosis-800.avif 800w, assets/v1/clifford-metamorphosis-1600.avif 1223w" sizes="(max-width: 860px) 100vw, 400px">
+                <img src="assets/v1/clifford-metamorphosis-800.jpg" srcset="assets/v1/clifford-metamorphosis-800.jpg 800w, assets/v1/clifford-metamorphosis-1600.jpg 1223w" sizes="(max-width: 860px) 100vw, 400px" width="800" height="450" loading="lazy" alt="Clifford Phase Space: Metamorphosis — a strange attractor traced in blue, violet and pink light">
+              </picture>
+            </button>
+            <figcaption>Clifford Phase Space: Metamorphosis <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot reveal">
+            <button type="button" data-full="assets/v1/kleinian-coral-cathedral-1600.jpg" data-title="Kleinian Coral Cathedral">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/kleinian-coral-cathedral-800.avif 800w, assets/v1/kleinian-coral-cathedral-1600.avif 1223w" sizes="(max-width: 860px) 100vw, 400px">
+                <img src="assets/v1/kleinian-coral-cathedral-800.jpg" srcset="assets/v1/kleinian-coral-cathedral-800.jpg 800w, assets/v1/kleinian-coral-cathedral-1600.jpg 1223w" sizes="(max-width: 860px) 100vw, 400px" width="800" height="450" loading="lazy" alt="Kleinian Coral Cathedral — a vaulted corridor of fractal coral lit by teal arches">
+              </picture>
+            </button>
+            <figcaption>Kleinian Coral Cathedral <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+
+          <figure class="shot reveal">
+            <button type="button" data-full="assets/v1/living-firepit-1600.jpg" data-title="Living Firepit">
+              <picture>
+                <source type="image/avif" srcset="assets/v1/living-firepit-800.avif 800w, assets/v1/living-firepit-1600.avif 1223w" sizes="(max-width: 860px) 100vw, 400px">
+                <img src="assets/v1/living-firepit-800.jpg" srcset="assets/v1/living-firepit-800.jpg 800w, assets/v1/living-firepit-1600.jpg 1223w" sizes="(max-width: 860px) 100vw, 400px" width="800" height="450" loading="lazy" alt="Living Firepit — a campfire in a forest clearing with constellation animals rising in the smoke">
+              </picture>
+            </button>
+            <figcaption>Living Firepit <span class="chip chip--pro">Pro</span></figcaption>
+          </figure>
+        </div>
+        <p class="gallery-note reveal">Real-time frames captured from the Cyanescent Player 1.0 renderer. Select an image to enlarge it.</p>
+      </div>
+
+      <dialog class="lightbox" aria-label="Enlarged visual">
+        <div class="lightbox-bar">
+          <span data-lightbox-title></span>
+          <button type="button" class="lightbox-close" aria-label="Close enlarged image">×</button>
+        </div>
+        <img src="" alt="">
+      </dialog>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">The Adaptive engine</p>
+        <h2 id="features-title" class="section-title reveal">The music is the director</h2>
+        <p class="section-lede reveal">
+          Cyanescent doesn’t paste a waveform over a screensaver. It listens to the structure of a track and lets that shape what you see, from the smallest pulse to the moment one world gives way to the next.
+        </p>
+
+        <div class="flow">
+          <div class="flow-step reveal">
+            <span class="num" aria-hidden="true">1</span>
+            <h3>Listen</h3>
+            <p>When a track plays from your library, the Player analyses the whole song: its beat grid, energy sections and where the drops are. Live input responds to the audio as it arrives.</p>
+          </div>
+          <div class="flow-step reveal">
+            <span class="num" aria-hidden="true">2</span>
+            <h3>Respond</h3>
+            <p>Every preset is driven by that musical state. Low end, kicks and rising energy move light, form and camera, and presets can anticipate a drop instead of reacting late.</p>
+          </div>
+          <div class="flow-step reveal">
+            <span class="num" aria-hidden="true">3</span>
+            <h3>Choreograph</h3>
+            <p>In <strong>Adaptive</strong> mode, changes between visual worlds are timed to the music’s structure and energy, with rendered transitions between presets. Adaptive Time sets how long each world tends to stay.</p>
+          </div>
+        </div>
+
+        <figure class="adaptive-demo reveal">
+          <div class="adaptive-demo-head">
+            <h3>How Adaptive follows a track</h3>
+            <p>Simplified illustration, not a recording</p>
+          </div>
+          <svg class="adaptive-svg" viewBox="0 0 960 236" role="img" aria-labelledby="adaptive-svg-title adaptive-svg-desc">
+            <title id="adaptive-svg-title">Diagram of Adaptive mode</title>
+            <desc id="adaptive-svg-desc">A track's waveform divided into energy sections: intro, build, drop, breakdown, and a second drop. Visual changes are marked where the structure changes, and each section is shaded with the colour of the visual world playing at the time.</desc>
+            <defs>
+              <linearGradient id="g-wave" x1="0" x2="1">
+                <stop offset="0" stop-color="#5ef0ff"/>
+                <stop offset="0.5" stop-color="#9b7bff"/>
+                <stop offset="1" stop-color="#ff5bd6"/>
+              </linearGradient>
+            </defs>
+            <!-- world bands -->
+            <rect x="0" y="26" width="190" height="170" fill="#5ef0ff" opacity="0.07"/>
+            <rect x="190" y="26" width="240" height="170" fill="#9b7bff" opacity="0.09"/>
+            <rect x="430" y="26" width="200" height="170" fill="#ff5bd6" opacity="0.09"/>
+            <rect x="630" y="26" width="130" height="170" fill="#b6ff6b" opacity="0.07"/>
+            <rect x="760" y="26" width="200" height="170" fill="#ffcf6b" opacity="0.09"/>
+            <!-- waveform envelope -->
+            <path transform="translate(0 18)" fill="url(#g-wave)" opacity="0.85" d="M0 95 L0 95 C40 88 80 86 120 84 C150 82 170 80 190 80 C240 76 300 66 350 56 C390 48 415 40 430 30 C470 28 560 27 630 30 C660 70 700 82 760 84 C780 40 800 28 830 27 C880 26 930 28 960 30 L960 160 C930 162 880 164 830 163 C800 162 780 150 760 106 C700 108 660 120 630 160 C560 163 470 162 430 160 C415 150 390 142 350 134 C300 124 240 114 190 110 C170 110 150 108 120 106 C80 104 40 102 0 95 Z"/>
+            <!-- section labels -->
+            <g fill="#b9c0d8" font-size="13">
+              <text x="12" y="18">Intro</text>
+              <text x="202" y="18">Build</text>
+              <text x="442" y="18">Drop</text>
+              <text x="642" y="18">Breakdown</text>
+              <text x="772" y="18">Drop</text>
+            </g>
+            <!-- change markers -->
+            <g stroke="#eef1fb" stroke-width="2" stroke-dasharray="4 5">
+              <line x1="190" y1="26" x2="190" y2="196"/>
+              <line x1="430" y1="26" x2="430" y2="196"/>
+              <line x1="630" y1="26" x2="630" y2="196"/>
+              <line x1="760" y1="26" x2="760" y2="196"/>
+            </g>
+            <g fill="#eef1fb" font-size="12" text-anchor="middle">
+              <text x="190" y="218">change</text>
+              <text x="430" y="218">on the drop</text>
+              <text x="630" y="218">change</text>
+              <text x="760" y="218">on the drop</text>
+            </g>
+            <!-- playhead -->
+            <g class="adaptive-playhead">
+              <line x1="0" y1="26" x2="0" y2="196" stroke="#ffffff" stroke-width="2"/>
+              <circle cx="0" cy="26" r="5" fill="#ffffff"/>
+            </g>
+          </svg>
+          <ul class="adaptive-legend" aria-label="Visual worlds in the illustration">
+            <li><i style="background:#5ef0ff"></i>World A</li>
+            <li><i style="background:#9b7bff"></i>World B</li>
+            <li><i style="background:#ff5bd6"></i>World C</li>
+            <li><i style="background:#b6ff6b"></i>World D</li>
+            <li><i style="background:#ffcf6b"></i>World E</li>
+          </ul>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ USE CASES ═══ -->
+    <section class="section section--tight" aria-labelledby="uses-title">
+      <div class="wrap">
+        <div class="center">
+          <p class="eyebrow reveal">Three ways to use it</p>
+          <h2 id="uses-title" class="section-title reveal">Listen. Perform. Export.</h2>
+        </div>
+        <div class="uses">
+          <article class="use reveal">
+            <picture>
+              <source type="image/avif" srcset="assets/v1/feather-star-ascension-800.avif">
+              <img src="assets/v1/feather-star-ascension-800.jpg" width="800" height="450" loading="lazy" alt="">
+            </picture>
+            <div class="use-body">
+              <h3>Listen</h3>
+              <p>A music player first: bring your own library and let the visuals take over the room.</p>
+              <ul class="ticks">
+                <li>Persistent music playlists, with shuffle and repeat</li>
+                <li>Add tracks or whole folders from your Mac</li>
+                <li>Fullscreen visualiser in its own window</li>
+              </ul>
+            </div>
+          </article>
+          <article class="use reveal">
+            <picture>
+              <source type="image/avif" srcset="assets/v1/topological-knot-reactor-800.avif">
+              <img src="assets/v1/topological-knot-reactor-800.jpg" width="800" height="450" loading="lazy" alt="">
+            </picture>
+            <div class="use-body">
+              <h3>Perform live</h3>
+              <p>Drive the visuals from whatever is playing in the room or on stage.</p>
+              <ul class="ticks">
+                <li>Microphone or audio-interface input</li>
+                <li>Native System Audio capture on macOS 14.2+</li>
+                <li>Optional Pocket Scion biofeedback via USB-MIDI</li>
+                <li>Manual preset changes or Adaptive timing</li>
+              </ul>
+            </div>
+          </article>
+          <article class="use reveal">
+            <picture>
+              <source type="image/avif" srcset="assets/v1/quantum-circuit-city-800.avif">
+              <img src="assets/v1/quantum-circuit-city-800.jpg" width="800" height="450" loading="lazy" alt="">
+            </picture>
+            <div class="use-body">
+              <h3>Export videos</h3>
+              <p>Export Studio renders a finished music video from your track, frame by frame.</p>
+              <ul class="ticks">
+                <li><strong>Automatic</strong>: a music-directed visual sequence</li>
+                <li><strong>Custom Timeline</strong>: place and edit every change yourself</li>
+                <li>Up to 1080p in Free, up to 4K in Pro</li>
+                <li>Yours to publish and monetise, royalty-free</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ EDITIONS ═══ -->
+    <section id="editions" class="section" aria-labelledby="editions-title">
+      <div class="wrap">
+        <div class="center">
+          <p class="eyebrow reveal">Editions</p>
+          <h2 id="editions-title" class="section-title reveal">Start free. Go further with Pro.</h2>
+          <p class="section-lede reveal">Every edition shares the same musical Adaptive engine, playlists, live input and Export Studio. Pro unlocks the full real-time collection and 4K export.</p>
+        </div>
+
+        <div class="editions">
+          <article class="edition reveal" aria-labelledby="ed-free">
+            <h3 id="ed-free">Cyanescent Player Free</h3>
+            <p class="edition-tag">A curated taste of the collection</p>
+            <p class="price"><strong>$0</strong></p>
+            <ul class="ticks">
+              <li>18 curated real-time visual presets</li>
+              <li>Music-responsive Adaptive engine</li>
+              <li>Music playlists</li>
+              <li>Live visuals from microphone, interface or System Audio</li>
+              <li>Rendered transitions</li>
+              <li>Export Studio, up to 1080p</li>
+              <li>No activation, account or subscription</li>
+            </ul>
+            <a href="#download" class="btn btn-primary">Download Free</a>
+          </article>
+
+          <article class="edition edition--pro reveal" aria-labelledby="ed-pro">
+            <span class="chip chip--pro edition-flag">Introductory price</span>
+            <h3 id="ed-pro">Cyanescent Player Pro</h3>
+            <p class="edition-tag">The complete real-time collection</p>
+            <p class="price"><strong>$5</strong> <s aria-label="Regular price 15 dollars">$15</s><small>One-time purchase. Introductory price; regular price $15.</small></p>
+            <ul class="ticks">
+              <li>75 real-time visual presets</li>
+              <li>The Adaptive engine across the full collection</li>
+              <li>Live performance: audio input, System Audio, Pocket Scion</li>
+              <li>Music playlists</li>
+              <li>Rendered transitions</li>
+              <li>Export Studio, up to 4K</li>
+              <li>DRM-free: unlimited installs for your personal and professional use</li>
+              <li>No licence key, activation or subscription</li>
+            </ul>
+            <a href="#buy-pro" class="btn btn-pro">Get Pro — $5</a>
+          </article>
+
+          <article class="edition edition--video reveal" aria-labelledby="ed-video">
+            <span class="chip chip--video edition-flag">Coming soon</span>
+            <h3 id="ed-video">Cyanescent Player Pro Video</h3>
+            <p class="edition-tag">Video worlds, transitions and HD Worlds</p>
+            <p class="price"><strong>$30</strong><small>Not yet available to buy.</small></p>
+            <ul class="ticks">
+              <li>77 core presets</li>
+              <li>Video transitions</li>
+              <li>Alien Visits</li>
+              <li>Six optional downloadable HD Worlds</li>
+              <li>Up to 83 presets with all worlds installed</li>
+              <li>Export Studio, up to 4K</li>
+            </ul>
+            <a href="#pro-video" class="btn btn-ghost">About Pro Video</a>
+          </article>
+        </div>
+
+        <div class="compare-wrap reveal">
+          <table class="compare">
+            <caption>Compare editions</caption>
+            <thead>
+              <tr>
+                <th scope="col"><span class="visually-hidden">Feature</span></th>
+                <th scope="col">Free</th>
+                <th scope="col">Pro</th>
+                <th scope="col">Pro Video <span class="chip chip--video">Soon</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Price</th><td>$0</td><td>$5 introductory ($15 regular)</td><td>$30</td></tr>
+              <tr><th scope="row">Real-time visual presets</th><td>18 curated</td><td>75</td><td>77 core; up to 83 with all six HD Worlds</td></tr>
+              <tr><th scope="row">Musical Adaptive engine</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Music playlists</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Live input and System Audio</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Pocket Scion biofeedback</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Rendered transitions</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Video transitions and Alien Visits</th><td class="no">—</td><td class="no">—</td><td class="yes">Yes</td></tr>
+              <tr><th scope="row">Optional HD Worlds</th><td class="no">—</td><td class="no">—</td><td class="yes">Six, downloaded separately</td></tr>
+              <tr><th scope="row">Export Studio maximum</th><td>1080p</td><td>4K</td><td>4K</td></tr>
+              <tr><th scope="row">DRM-free, no activation or account</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ LICENSING ═══ -->
+    <section id="licence" class="section licence" aria-labelledby="licence-title">
+      <div class="wrap center">
+        <p class="eyebrow reveal">Licensing</p>
+        <h2 id="licence-title" class="section-title licence-title reveal"><span class="spectrum-text">Buy once.</span> Create forever.</h2>
+        <p class="section-lede reveal">Pay once for Pro and it’s yours to use indefinitely. Install it, work offline, and keep everything you make.</p>
+
+        <ul class="promises">
+          <li class="reveal"><strong>No subscription</strong><span>One payment. No renewals, no expiry.</span></li>
+          <li class="reveal"><strong>No DRM</strong><span>No copy protection, device registration or installation limits.</span></li>
+          <li class="reveal"><strong>No keys or activation</strong><span>No serial number, licence key, online activation or licence-management software.</span></li>
+          <li class="reveal"><strong>No account</strong><span>You don’t need to sign in to run the Player.</span></li>
+          <li class="reveal"><strong>All your Macs</strong><span>Install on unlimited computers you personally own or use, for your own personal and professional work, including work for clients or an employer.</span></li>
+          <li class="reveal"><strong>Works offline</strong><span>Once downloaded and installed, the Player never contacts a licensing server.</span></li>
+          <li class="reveal"><strong>Your exports are yours</strong><span>Publish, perform, sell and monetise finished videos worldwide and permanently, with no royalties and no attribution required.</span></li>
+        </ul>
+
+        <p class="fine reveal">
+          The licence is individual, not shared or organisation-wide. Cyanescent Player Free is free of charge but proprietary; no edition is open-source. Export rights cover the bundled visuals in your finished works; you still need the rights to any music or other material you add, and the supplied presets, shaders and media can’t be extracted or resold as a standalone library. See the full <a href="docs/licence.html">licence agreement</a>.
         </p>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         DOWNLOAD
-    ═══════════════════════════════════════════════════════════════ -->
-    <section id="download" class="section">
-      <div class="section-inner section-centered">
-        <p class="section-label reveal">Get Started</p>
-        <h2 class="section-title reveal">Download Cyanescent Player</h2>
-        <p class="section-desc reveal">
-          Load your music. Enter the visual world. Three free downloads are available.
+    <!-- ═══ PRO VIDEO ═══ -->
+    <section id="pro-video" class="section" aria-labelledby="pv-title">
+      <div class="wrap pv">
+        <div class="pv-media reveal">
+          <picture>
+            <source type="image/avif" srcset="assets/v1/hd-red-cage-stinkhorn-800.avif 800w, assets/v1/hd-red-cage-stinkhorn-1600.avif 1600w" sizes="(max-width: 860px) 100vw, 640px">
+            <img src="assets/v1/hd-red-cage-stinkhorn-1600.jpg" srcset="assets/v1/hd-red-cage-stinkhorn-800.jpg 800w, assets/v1/hd-red-cage-stinkhorn-1600.jpg 1600w" sizes="(max-width: 860px) 100vw, 640px" width="1600" height="900" loading="lazy" alt="Red Cage Stinkhorn HD World — looking up through a lattice of red fungal cage branches">
+          </picture>
+          <p>Red Cage Stinkhorn, an optional HD World, rendered in the Player.</p>
+          <div class="pv-thumbs">
+            <figure>
+              <picture>
+                <source type="image/avif" srcset="assets/v1/hd-helix-tunnel-800.avif">
+                <img src="assets/v1/hd-helix-tunnel-800.jpg" width="640" height="360" loading="lazy" alt="Helix Tunnel HD World — a neon spiral tunnel in blue and magenta">
+              </picture>
+              <figcaption>Helix Tunnel</figcaption>
+            </figure>
+            <figure>
+              <picture>
+                <source type="image/avif" srcset="assets/v1/hd-physarum-800.avif">
+                <img src="assets/v1/hd-physarum-800.jpg" width="640" height="360" loading="lazy" alt="Physarum HD World — glowing slime-mould networks spreading across a dark surface">
+              </picture>
+              <figcaption>Physarum</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div>
+          <span class="chip chip--video reveal">Coming soon · $30</span>
+          <h2 id="pv-title" class="section-title reveal" style="margin-top:1rem">Pro Video and the HD Worlds</h2>
+          <p class="section-lede reveal">Pro Video adds video-driven worlds, video transitions and Alien Visits to the Pro collection: 77 core presets, with Export Studio up to 4K.</p>
+          <p class="reveal">Six <strong>HD Worlds</strong> are optional, separate downloads. Each comes as its own installer on a disk image: quit Pro Video, double-click the installer and click <em>Install World</em>. No Terminal and no administrator password are needed. HD Worlds require Pro Video; they aren’t built into the main application, and Free and Pro can’t use them. With all six installed, Pro Video plays up to 83 presets.</p>
+          <ul class="worlds reveal" aria-label="The six HD Worlds">
+            <li class="chip">Red Cage Stinkhorn</li>
+            <li class="chip">Physarum</li>
+            <li class="chip">Newton Basin</li>
+            <li class="chip">Newton’s Law</li>
+            <li class="chip">Artificial Consciousness</li>
+            <li class="chip">Helix Tunnel</li>
+          </ul>
+          <p class="fine reveal">Pro Video isn’t on sale yet, and nothing can be purchased or downloaded for it today. It will follow Free and Pro once its larger release uploads are complete.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ DOWNLOAD ═══ -->
+    <section id="download" class="section" aria-labelledby="download-title">
+      <div class="wrap">
+        <div class="center">
+          <p class="eyebrow reveal">Get started</p>
+          <h2 id="download-title" class="section-title reveal">Download Cyanescent Player</h2>
+          <p class="section-lede reveal">Signed with a Developer ID and notarised by Apple: it opens normally, without workarounds.</p>
+        </div>
+
+        <div class="downloads">
+          <article class="dl reveal" aria-labelledby="dl-free">
+            <span class="chip chip--free">Free</span>
+            <h3 id="dl-free" style="margin-top:0.75rem">Cyanescent Player Free 1.0.0</h3>
+            <p style="color:var(--text-soft)">18 curated presets, the full Adaptive engine and Export Studio up to 1080p.</p>
+            <dl>
+              <dt>File</dt><dd><code>Cyanescent-Player-Free-1.0.0-macOS-universal.zip</code></dd>
+              <dt>Size</dt><dd>7.6 MB (7,643,421 bytes)</dd>
+              <dt>Version</dt><dd>1.0.0 (build 2)</dd>
+              <dt>SHA-256</dt><dd class="hash">e62bbb934a209f318cd49e318f6840e9e82f5fc15b26d8424fd67e80729efcc7</dd>
+            </dl>
+            <!-- LAUNCH: replace with the verified public ZIP URL, remove aria-disabled/data-launch-pending and the note (see LAUNCH.md) -->
+            <a class="btn btn-primary" role="link" aria-disabled="true" data-launch-pending="free-download">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Free for macOS
+            </a>
+            <span class="pending-note" data-launch-pending="free-download-note">Preview: the download link is added at launch.</span>
+          </article>
+
+          <article id="buy-pro" class="dl reveal" aria-labelledby="dl-pro">
+            <span class="chip chip--pro">Pro · $5 introductory</span>
+            <h3 id="dl-pro" style="margin-top:0.75rem">Cyanescent Player Pro 1.0.0</h3>
+            <p style="color:var(--text-soft)">Pay once and receive the normal Pro application download. Your receipt and download link come from the checkout provider. There’s nothing else to activate.</p>
+            <dl>
+              <dt>Price</dt><dd>$5 introductory · $15 regular · one-time</dd>
+              <dt>Delivers</dt><dd><code>Cyanescent-Player-Pro-1.0.0-macOS-universal.zip</code></dd>
+              <dt>Requires</dt><dd>macOS 12 or later · Apple Silicon or Intel</dd>
+            </dl>
+            <!-- LAUNCH: replace with the verified checkout URL, remove aria-disabled/data-launch-pending and the note (see LAUNCH.md) -->
+            <a class="btn btn-pro" role="link" aria-disabled="true" data-launch-pending="pro-checkout">Get Pro — $5</a>
+            <span class="pending-note" data-launch-pending="pro-checkout-note">Preview: checkout opens at launch.</span>
+          </article>
+        </div>
+
+        <ol class="steps">
+          <li class="reveal">Open the ZIP in Finder, then drag the application into your Applications folder.</li>
+          <li class="reveal">Open it. The first launch can take a little while as the visual shaders load.</li>
+          <li class="reveal">Add tracks or a folder in Music Playlists, press Play, and choose <strong>Visualiser Fullscreen</strong>.</li>
+        </ol>
+        <p class="fine center reveal" style="margin-top:1.5rem">
+          Full instructions are in the <a href="docs/quick-start.html">Quick Start</a>. Always download from this site, and never disable Gatekeeper to open a download. Version 1.0.0 replaces the earlier 0.9 Preview and 0.9 Fungal Edition, which are no longer offered.
         </p>
+      </div>
+    </section>
 
-        <div class="release-grid reveal-stagger">
-          <div class="release-card reveal">
-            <h3>0.9 Preview</h3>
-            <p>The standard preview release, with the full curated set of Cyanescent visual presets.</p>
-            <div class="download-actions">
-              <a href="https://github.com/Cyanescent-dev/Cyanescent-Player/releases/download/v0.9preview/Cyanescent-Player-0.9-Preview-macOS.zip" class="btn btn-primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download for macOS
-              </a>
-              <a href="https://github.com/Cyanescent-dev/Cyanescent-Player/releases/tag/v0.9preview" class="btn btn-secondary" rel="noopener noreferrer" target="_blank">
-                GitHub Release
-              </a>
+    <!-- ═══ REQUIREMENTS ═══ -->
+    <section id="requirements" class="section section--tight" aria-labelledby="req-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">System requirements</p>
+        <h2 id="req-title" class="section-title reveal">What you need</h2>
+        <div class="reqs">
+          <div class="req reveal"><h3>macOS 12 or later</h3><p>Universal application for Apple Silicon and Intel Macs.</p></div>
+          <div class="req reveal"><h3>Graphics</h3><p>A GPU and driver capable of WebGL 2 in macOS WebKit. Start on Standard quality and increase it if playback stays smooth. There is no certified minimum GPU; complex worlds and 4K export can need much more time and memory.</p></div>
+          <div class="req reveal"><h3>Export resolution</h3><p>Free exports up to 1080p. Pro and Pro Video export up to 4K.</p></div>
+          <div class="req reveal"><h3>System Audio</h3><p>Native System Audio capture needs macOS 14.2 or later. On earlier versions, use a separately configured external or loopback input (routing drivers aren’t included).</p></div>
+          <div class="req reveal"><h3>Pocket Scion (optional)</h3><p>Biofeedback input from a compatible Pocket Scion / SCÍON USB-MIDI device, connected with a data-capable cable.</p></div>
+          <div class="req reveal"><h3>Disk space</h3><p>The Free download is 7.6 MB. Optional Pro Video HD Worlds need their own space, from about 0.41 GB to 2.53 GB each.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="section section--tight" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="center">
+          <p class="eyebrow reveal">Questions</p>
+          <h2 id="faq-title" class="section-title reveal">Good to know</h2>
+        </div>
+        <div class="faq reveal">
+          <details>
+            <summary>Is Pro a subscription?</summary>
+            <p>No. Pro is a one-time purchase. You use your edition indefinitely, with no subscription, expiry or renewal.</p>
+          </details>
+          <details>
+            <summary>How many Macs can I install it on?</summary>
+            <p>As many as you personally own or use, for your own personal and professional work, including work for clients or an employer. It’s an individual licence, so it isn’t shared with other people or across an organisation.</p>
+          </details>
+          <details>
+            <summary>Do I need an account, licence key or internet connection?</summary>
+            <p>No account, serial number, licence key or online activation. Once downloaded and installed, the Player works offline without contacting a licensing server.</p>
+          </details>
+          <details>
+            <summary>Can I sell the videos I make?</summary>
+            <p>Yes. You can publish, distribute, sell and monetise finished videos and performances made with Cyanescent Player, worldwide and permanently, royalty-free and without attribution. You still need the rights to any music or other material you add.</p>
+          </details>
+          <details>
+            <summary>Is Cyanescent Player open-source?</summary>
+            <p>No. Free costs nothing, but every edition is proprietary software. The DRM-free licence is about how you use your copy, not about access to the source code.</p>
+          </details>
+          <details>
+            <summary>Do HD Worlds come with Pro?</summary>
+            <p>No. HD Worlds are optional downloads for Pro Video only, each installed with its own double-click installer. Pro Video is coming soon.</p>
+          </details>
+          <details>
+            <summary>What happened to the 0.9 Preview and Fungal Edition?</summary>
+            <p>Version 1.0.0 supersedes them, with substantially upgraded presets and many fixes, so the earlier previews are no longer offered. Cyanescent Player Free 1.0.0 is the recommended free download.</p>
+          </details>
+          <details>
+            <summary>Will Free, Pro and Pro Video share my playlists?</summary>
+            <p>Yes. All editions intentionally share music playlist data on your Mac, so you can move between editions without rebuilding your library.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MORE TOOLS ═══ -->
+    <section class="section section--tight" aria-labelledby="tools-title">
+      <div class="wrap">
+        <p class="eyebrow reveal">Also from Cyanescent</p>
+        <h2 id="tools-title" class="section-title reveal">More free tools</h2>
+        <div class="tools">
+          <article class="tool reveal">
+            <h3>Psy-Roller</h3>
+            <p>A free psytrance kick-and-bass maker. Universal macOS VST3 plugin for building the driving low end of your tracks.</p>
+            <div class="actions">
+              <a href="psy-roller/" class="btn btn-ghost btn-sm">Psy-Roller page</a>
+              <a href="https://github.com/Cyanescent-dev/Cyanescent-dev.github.io/releases/download/psy-roller-v1.0.1/Psy-Roller-1.0.1-VST3.zip" class="btn btn-ghost btn-sm">Download v1.0.1 VST3</a>
             </div>
-          </div>
-
-          <div class="release-card release-card--fungal reveal">
-            <span class="release-card-badge">New · Free</span>
-            <h3>0.9 — Fungal Edition</h3>
-            <p>Standard presets plus 23 new fungi &amp; slime mould presets. See it in the <a href="#fungal-edition">gallery above</a>.</p>
-            <div class="download-actions">
-              <a href="https://github.com/Cyanescent-dev/Cyanescent-Player/releases/download/V0.9-Fungal-Edition/Cyanescent-Player-Fungal-0.9.0-macOS.zip" class="btn btn-primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download Fungal Edition
-              </a>
-              <a href="https://github.com/Cyanescent-dev/Cyanescent-Player/releases/tag/V0.9-Fungal-Edition" class="btn btn-secondary" rel="noopener noreferrer" target="_blank">
-                GitHub Release
-              </a>
-            </div>
-          </div>
-
-          <div class="release-card release-card--milkrunner reveal">
-            <span class="release-card-badge release-card-badge--milkrunner">Companion App · Free</span>
+          </article>
+          <article class="tool reveal">
             <h3>Milkrunner</h3>
-            <p>A free Milkdrop-compatible audio visualiser for macOS. Play Milkdrop presets to your music, or drive them live with the Pocket Scion bio-feedback synth.</p>
-            <div class="download-actions">
-              <a href="https://github.com/Cyanescent-dev/milkrunner/releases/download/milk-runner-visuals/Milk.Runner.Visualizer.zip" class="btn btn-primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download Milkrunner
-              </a>
-              <a href="https://github.com/Cyanescent-dev/milkrunner/releases/tag/milk-runner-visuals" class="btn btn-secondary" rel="noopener noreferrer" target="_blank">
-                GitHub Release
-              </a>
+            <p>A free Milkdrop-compatible audio visualiser for macOS. Play Milkdrop presets to your music, or drive them live with the Pocket Scion biofeedback synth.</p>
+            <div class="actions">
+              <a href="https://github.com/Cyanescent-dev/milkrunner/releases/download/milk-runner-visuals/Milk.Runner.Visualizer.zip" class="btn btn-ghost btn-sm">Download Milkrunner</a>
+              <a href="https://github.com/Cyanescent-dev/milkrunner/releases/tag/milk-runner-visuals" class="btn btn-ghost btn-sm" rel="noopener noreferrer">GitHub release</a>
             </div>
-          </div>
+          </article>
         </div>
-
-        <div class="download-actions reveal" style="margin-top: 1.5rem;">
-          <a href="https://github.com/Cyanescent-dev/Cyanescent-Player/issues" class="btn btn-outline" rel="noopener noreferrer" target="_blank">
-            Report an Issue
-          </a>
-        </div>
-
-        <p class="download-meta reveal">
-          macOS only · Signed &amp; notarised — opens normally, no extra steps needed
-        </p>
       </div>
     </section>
 
   </main>
 
-  <!-- ═══════════════════════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════════════════════ -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span class="footer-brand">Cyanescent Player · 0.9 Preview &amp; Fungal Edition · © 2026</span>
-      <ul class="footer-links" role="list">
-        <li><a href="psy-roller/">Psy-Roller</a></li>
-        <li><a href="https://github.com/Cyanescent-dev/Cyanescent-Player" rel="noopener noreferrer" target="_blank">GitHub</a></li>
-      </ul>
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <p>Cyanescent Player 1.0.0 · © 2026 Samuel Ferguson. All rights reserved.</p>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="docs/quick-start.html">Quick Start</a></li>
+          <li><a href="docs/licence.html">Licence (EULA)</a></li>
+          <li><a href="docs/third-party-notices.html">Third-party notices</a></li>
+          <li><a href="docs/hd-worlds.html">HD World installation</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="psy-roller/">Psy-Roller</a></li>
+        </ul>
+      </nav>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
-
+  <script src="v1.js"></script>
 </body>
 </html>

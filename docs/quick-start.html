@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Start — Cyanescent Player 1.0.0</title>
+  <meta name="description" content="Quick Start for Cyanescent Player 1.0.0.">
+  <meta name="theme-color" content="#06070d">
+  <link rel="canonical" href="https://cyanescent-dev.github.io/docs/quick-start.html">
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/v1/icon-64.png">
+  <link rel="apple-touch-icon" href="../assets/v1/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../v1.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="nav">
+    <nav class="wrap nav-inner" aria-label="Primary">
+      <a href="../" class="brand"><img src="../assets/v1/icon-64.png" alt="" width="30" height="30">Cyanescent</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="visually-hidden">Menu</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="../#editions">Editions</a></li>
+        <li><a href="../#licence">Licence</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../psy-roller/">Psy-Roller</a></li>
+        <li><a href="../#download" class="btn btn-primary btn-sm">Download Free</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" class="doc">
+    <div class="wrap doc-inner">
+      <nav aria-label="Documentation">
+        <ul class="doc-nav">
+          <li><a href="quick-start.html" aria-current="page">Quick Start</a></li>
+          <li><a href="licence.html">Licence (EULA)</a></li>
+          <li><a href="third-party-notices.html">Third-party notices</a></li>
+          <li><a href="hd-worlds.html">HD World installation</a></li>
+        </ul>
+      </nav>
+      <p class="doc-meta">Cyanescent Player 1.0.0 · This page reproduces the document supplied with the release downloads.</p>
+<h1 id="cyanescent-player-100-quick-start">Cyanescent Player 1.0.0 — Quick Start</h1>
+<p>Music-responsive visuals and video creation. Version 1.0.0, build 2. Official website and support starting point: <a href="../">cyanescent-dev.github.io</a>.</p>
+<h2 id="requirements-and-editions">Requirements and editions</h2>
+<p>macOS 12 or later; universal applications support Apple Silicon and Intel. A GPU/driver capable of WebGL 2 in macOS WebKit is required. Start with Standard quality and increase it if playback remains smooth. There is no certified minimum GPU/VRAM matrix; 4K export and complex worlds can require substantially more time and memory. Native System Audio capture requires macOS 14.2 or later. Pocket Scion requires compatible USB-MIDI hardware. Optional worlds need separate disk space.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Edition</th><th scope="col">Included presets</th><th scope="col">Maximum export</th><th scope="col">Additional content</th></tr></thead><tbody><tr><td>Free (application named Cyanescent Player)</td><td>18 curated real-time presets</td><td>1080p</td><td>Rendered transitions</td></tr><tr><td>Pro</td><td>75 real-time presets</td><td>4K</td><td>Rendered transitions</td></tr><tr><td>Pro Video</td><td>77 core presets</td><td>4K</td><td>Video-transition library, Alien Visits; six separately installed HD Worlds give 83 playable presets</td></tr></tbody></table></div>
+<p>All editions share the musical Adaptive engine and persistent music playlists. Optional HD Worlds are not embedded in the main Pro Video download. Free and Pro do not include Pro Video-only video assets or optional worlds.</p>
+<h2 id="drm-free-licence-and-your-exports">DRM-free licence and your exports</h2>
+<p>Free is freely downloadable proprietary software. Pro and Pro Video are ordinary macOS downloads following a one-time purchase: use your edition indefinitely, with no subscription, licence expiry or renewal. Install it on unlimited computers you personally own or use for your own personal and professional work, including work for clients or an employer. This is an individual licence, not a shared or organisation-wide licence for other users. There are no serial numbers, licence keys, online activation, account login, device registration or licence-management software. Once downloaded and installed, Player works offline without contacting a licensing server. Simply install and use your edition; its edition-specific features still apply.</p>
+<p>You may create, publish, perform, distribute, sell and monetise finished visual exports containing the bundled presets and HD Worlds, worldwide, perpetually, without royalties or attribution. These rights do not depend on an account, subscription or continued use of Player; completed exports remain usable after uninstalling it. You still need rights to any music or other material you supply. The software and underlying resource libraries remain proprietary and cannot be redistributed or resold without permission. See the accompanying licence and Third-party Notices.</p>
+<h2 id="install-and-launch">Install and launch</h2>
+<ol><li>Download your edition from the official website. Use the final release's SHA-256 checksum list when verifying a download; development candidates are not public distributions.</li><li>Extract the application ZIP with Finder, then drag the application into Applications. If supplied on a disk image, mount it and follow the included installation instructions. Keep each edition's existing application name.</li><li>Open the application. The initial shader-loading screen can take time, especially on first launch. Use the application menu → About to check the edition, <strong>1.0.0 (build 2)</strong> and website link.</li></ol>
+<p>Use official signed/notarised releases. If macOS reports damage, an unidentified developer or an unverified download, stop and check the source, checksum and current support information. Re-download the correct release if needed. Do not disable Gatekeeper or remove quarantine as an installation procedure. Offline first launch is supported only after the final distributed artifact has passed offline release testing.</p>
+<h2 id="music-and-playlists">Music and playlists</h2>
+<p>Use <strong>Add Tracks</strong> or <strong>Add Folder</strong> in Music Playlists to import local music. Select a track and press Play. New Playlist, Rename, Delete, shuffle and repeat organise playback. Importing music references your files; keep external drives connected and avoid deleting or moving the originals. Missing tracks can be located again using the recovery controls.</p>
+<p>Open <strong>Options → Default Playlist</strong> to choose the music playlist used at startup. Renaming that playlist preserves its identity. Playlist restoration does not automatically start audio playback.</p>
+<p>Free, Pro and Pro Video intentionally share playlist data under:</p>
+<p><code>~/Library/Application Support/Cyanescent Player/</code></p>
+<p>The principal files are <code>music-playlists-v1.json</code> and <code>music-playlists-v1.backup.json</code>; additional conflict/unsaved files can preserve recovery data. Quit all editions before making a backup. Do not edit these files while Player is running or delete them when uninstalling only one edition. Music files themselves remain in their original locations.</p>
+<h2 id="visuals-and-adaptive-playback">Visuals and Adaptive playback</h2>
+<p>Choose a preset from the Preset menu or use Preset Manager to organise a visual preset playlist. In Options, <strong>Transition Mode → Adaptive</strong> times changes to the music; <strong>Adaptive Time</strong> changes the typical time spent in a preset. Manual preset selection remains available. Local Player Audio can analyse the full track; live input responds to currently arriving audio.</p>
+<p>All editions provide rendered transitions. Pro Video additionally offers <strong>Use Video Transitions</strong> and Alien Visits. These are separate options; optional worlds must be validly installed before they become selectable. Standard quality is a useful first performance check.</p>
+<p><strong>Visualiser Fullscreen</strong> opens the separate visualiser window. Cmd+W closes the current window; the Player can remain running. Use the Dock icon or Window → Show Main Player to reopen it. Cmd+Q quits the application and safely handles active export work.</p>
+<h2 id="export-studio">Export Studio</h2>
+<p>Load a track, then choose <strong>Export Music Video</strong>. Use <strong>Automatic</strong> for a music-directed visual sequence or <strong>Custom Timeline</strong> to place and edit preset changes. Choose the music range, destination, resolution and frame rate offered by your edition; preview the sequence before a long render. Free exports up to 1080p; Pro and Pro Video offer up to 4K. An unavailable HD World cannot be used in an export.</p>
+<p>Select an output location with sufficient free space and start the export. Wait for completion before moving the file. Use the provided cancellation controls if you need to stop; avoid force-quitting during output finalisation. Short draft exports are a useful check before a full-length video.</p>
+<h2 id="hd-worlds">HD Worlds</h2>
+<p>See <a href="hd-worlds.html">HD World installation</a>. Each world is a separate installer app on a disk image. Quit Pro Video, open the installer, click Install World and wait for success, then open/restart Pro Video. No Terminal or copying to Application Support is required. Free and Pro cannot use these worlds.</p>
+<h2 id="pocket-scion-and-live-audio">Pocket Scion and live audio</h2>
+<p>Connect a compatible Pocket Scion/SCÍON USB-MIDI device with a data-capable cable and confirm it appears in macOS Audio MIDI Setup. Open <strong>Options → Audio Source → Scion Mode</strong>. Enable the input meter and select the desired sound mode, such as Ethereal Drone or Crystal Chimes; use a comfortable output volume. A connected device with no signal is different from a device actively sending notes/controllers. Check the displayed status if the meter is silent.</p>
+<p>For microphone or audio-interface input, choose <strong>Enable External Audio Inputs…</strong>, approve the input request and select the intended device. On macOS 14.2+, <strong>System Audio</strong> captures another application's sound while leaving it audible through the selected output. Earlier macOS versions require a separately configured external/loopback input for that use; a default microphone is not system audio. Third-party routing drivers are not included.</p>
+<p>If input is silent, check the selected source, device connection, gain and the source application's playback. In System Settings → Privacy &amp; Security, review Microphone access for external capture, or Screen &amp; System Audio Recording access for native system capture; names vary by macOS version. Quit/reopen Player if macOS requires it after changing permission. System-audio permission and microphone permission are distinct. Scion USB-MIDI input does not itself require microphone capture permission. Do not repeatedly reset all permissions as a first troubleshooting step.</p>
+<h2 id="troubleshooting-and-removal">Troubleshooting and removal</h2>
+<p>For visual stalls, allow first-load compilation to finish, try Standard quality, close unnecessary GPU-heavy applications and check current support information. For missing music or worlds, reconnect the drive or use the appropriate recovery/reinstallation path. Include the edition, About version/build, macOS version and a description of the problem when seeking support. Never send passwords, private keys or unreviewed playlist files/logs containing personal paths.</p>
+<p>To uninstall an edition, quit it and move only its application from Applications to the Bin. Keep shared Application Support data if another edition will still use it. Uninstall individual worlds using the focused guide; their files are separate from music playlists. Clearing macOS WebKit preferences/storage or deleting shared user data is a separate, deliberate reset, not part of ordinary app removal.</p>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <p>Cyanescent Player 1.0.0 · © 2026 Samuel Ferguson. All rights reserved.</p>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="quick-start.html">Quick Start</a></li>
+          <li><a href="licence.html">Licence (EULA)</a></li>
+          <li><a href="third-party-notices.html">Third-party notices</a></li>
+          <li><a href="hd-worlds.html">HD World installation</a></li>
+          <li><a href="../support.html">Support</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <script src="../v1.js"></script>
+</body>
+</html>

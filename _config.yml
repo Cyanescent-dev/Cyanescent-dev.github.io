@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) build settings: keep maintainer files off the public site.
+exclude:
+  - README.md
+  - LAUNCH.md
+  - tools

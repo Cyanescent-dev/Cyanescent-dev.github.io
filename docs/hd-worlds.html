@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HD World installation — Cyanescent Player 1.0.0</title>
+  <meta name="description" content="HD World installation for Cyanescent Player 1.0.0.">
+  <meta name="theme-color" content="#06070d">
+  <link rel="canonical" href="https://cyanescent-dev.github.io/docs/hd-worlds.html">
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/v1/icon-64.png">
+  <link rel="apple-touch-icon" href="../assets/v1/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../v1.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="nav">
+    <nav class="wrap nav-inner" aria-label="Primary">
+      <a href="../" class="brand"><img src="../assets/v1/icon-64.png" alt="" width="30" height="30">Cyanescent</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="visually-hidden">Menu</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="../#editions">Editions</a></li>
+        <li><a href="../#licence">Licence</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="../psy-roller/">Psy-Roller</a></li>
+        <li><a href="../#download" class="btn btn-primary btn-sm">Download Free</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" class="doc">
+    <div class="wrap doc-inner">
+      <nav aria-label="Documentation">
+        <ul class="doc-nav">
+          <li><a href="quick-start.html">Quick Start</a></li>
+          <li><a href="licence.html">Licence (EULA)</a></li>
+          <li><a href="third-party-notices.html">Third-party notices</a></li>
+          <li><a href="hd-worlds.html" aria-current="page">HD World installation</a></li>
+        </ul>
+      </nav>
+      <p class="doc-meta">Cyanescent Player 1.0.0 · This page reproduces the document supplied with the release downloads.</p>
+<h1 id="optional-hd-worlds-installation-and-removal">Optional HD Worlds — installation and removal</h1>
+<p>For <strong>Cyanescent Player Pro Video 1.0.0</strong>. The six worlds are Red Cage Stinkhorn, Physarum, Newton Basin, Newton's Law, Artificial Consciousness and Helix Tunnel. Install only the worlds you want. All six increase Pro Video's 77 core presets to 83 playable presets.</p>
+<h2 id="install-a-world">Install a world</h2>
+<ol><li>Download the world's <strong>Installer 1.0.0</strong> disk image from <a href="../">the official website</a>. Verify its checksum against the final release list if desired. Keep Player and world versions matched.</li><li>Quit Cyanescent Player Pro Video completely with Cmd+Q. Closing its window alone does not quit it.</li><li>Open the DMG in Finder. Double-click the <strong>&lt;World&gt; Installer</strong> application inside it; do not copy the payload or locate an extracted world folder.</li><li>Check the world name, package size and required Player version. Click <strong>Install World</strong>. The installer checks the package, copies and verifies it, then activates it. Cancel is available before final activation. No administrator password is required.</li><li>Wait for <strong>installed successfully</strong>, then click Done. Open/restart Pro Video and select the world in the preset collection. Eject the disk image afterward. The optional Open Player button opens the chosen Pro Video application only when you click it.</li></ol>
+<p>If Pro Video cannot be found, install it first or use <strong>Choose Pro Video…</strong> to locate your existing 1.0.0 application. Choosing another edition or an incompatible version will not work. The installer never installs another application or terminates Player automatically.</p>
+<p>The DMG must be a final signed/notarised release. An unsigned prototype is for acceptance testing and does not establish downloaded Gatekeeper behaviour. Do not disable macOS security to install an unverified download.</p>
+<h2 id="space-reinstallation-and-errors">Space, reinstallation and errors</h2>
+<p>Allow room for the downloaded DMG, a complete new installed copy and any previous copy retained for rollback. Approximate payload sizes are 2.53 GB for Stinkhorn, 0.71 GB for Physarum and 0.41–0.47 GB for each other world. The installer requires the new payload plus a small safety margin to be free <strong>in addition to</strong> existing data.</p>
+<p>Running an installer again asks before replacing its world. Replacement keeps the previous copy as a hidden <code>.previous-&lt;world&gt;-&lt;identifier&gt;</code> directory; it does not merge files. Keep that backup until the new installation is accepted. Corruption, mismatched metadata, unsafe paths or insufficient disk space produce an error and leave the prior installation intact. Quit Player before retrying.</p>
+<p>Ordinary cancellation removes its incomplete private staging copy. Force-quitting or losing power may leave hidden staging/rollback data. Retry is safe, but do not delete hidden installer directories while an installer is active. Seek guidance before reclaiming an unfamiliar hidden directory: it may contain the previous world.</p>
+<h2 id="find-and-remove-an-installed-world">Find and remove an installed world</h2>
+<p>Installed worlds live in your account, outside the application:</p>
+<p><code>~/Library/Application Support/Cyanescent Player/HD Worlds/</code></p>
+<div class="table-wrap"><table><thead><tr><th scope="col">World</th><th scope="col">Installed folder</th></tr></thead><tbody><tr><td>Red Cage Stinkhorn</td><td><code>red-cage-stinkhorn</code></td></tr><tr><td>Physarum</td><td><code>apollonian-physarum-genesis</code></td></tr><tr><td>Newton Basin</td><td><code>newton-basin-descent</code></td></tr><tr><td>Newton's Law</td><td><code>newtons-law</code></td></tr><tr><td>Artificial Consciousness</td><td><code>artificial-consciousness</code></td></tr><tr><td>Helix Tunnel</td><td><code>helix-tunnel</code></td></tr></tbody></table></div>
+<p>To remove one world, quit Pro Video and all world installers. In Finder use Go → Go to Folder, enter the location above, and move only that world's folder to the Bin. Restart Player. Missing worlds remain visible but disabled as <strong>HD World — Not Installed</strong>; invalid installations show a validation reason. Removing a world does not remove music or playlists. Do not delete the entire Cyanescent Player Application Support folder.</p>
+<p>The older ZIP/command-line mechanism remains a supported fallback and diagnostic path for maintainers; it is described in <a href="hd-worlds.html#v1-optional-hd-worlds-command-line-fallback">the technical HD World guide</a>. Customers using installer DMGs do not need Terminal.</p>
+<h1 id="v1-optional-hd-worlds-command-line-fallback">V1 optional HD Worlds — command-line fallback</h1>
+<h2 id="installing-a-pack">Installing a pack</h2>
+<ol><li>Download only the desired ZIP and its SHA-256 checksum. Optionally check the archive with <code>shasum -a 256 &lt;archive.zip&gt;</code> against the published checksum.</li><li>Quit Cyanescent Player Pro Video completely. Extract the ZIP with Finder; keep the extracted world folder intact.</li><li>In Terminal, run the installed Pro Video executable, replacing the final path with the extracted world directory:</li></ol>
+<pre><code>&quot;/Applications/Cyanescent Player Pro Video.app/Contents/MacOS/CyanescentPlayerProVideo&quot; --install-hd-world &quot;/path/to/helix-tunnel&quot;</code></pre>
+<p>For replacement, add <code>--replace</code>. The installer validates the source, copies only approved files into a private folder on the destination filesystem, validates the copied files, then atomically publishes them. A failed validation leaves the current installation intact. Replacement atomically swaps directories and retains the previous world as <code>.previous-&lt;directory&gt;-&lt;UUID&gt;</code> under HD Worlds; the command prints its location. Once satisfied with the replacement, quit Player and delete that backup manually to recover space. Allow space for the ZIP, extracted source, new installed copy and any retained backup.</p>
+<ol><li>Restart Player. A valid world becomes selectable. Missing worlds remain visible and disabled as <strong>HD World — Not Installed</strong>; invalid worlds show the validation reason. To uninstall, quit Player, remove only that world's installed directory, and restart.</li></ol>
+<p>Installed directories are direct children of:</p>
+<pre><code>~/Library/Application Support/Cyanescent Player/HD Worlds/</code></pre>
+<p>Do not merge packs manually, change files while Player is running, or put expansion data inside the application bundle. No administrator access, account, downloader or licence activation is involved. The CLI requires Pro Video and rejects installation while the standard Pro Video application is running.</p>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <p>Cyanescent Player 1.0.0 · © 2026 Samuel Ferguson. All rights reserved.</p>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="quick-start.html">Quick Start</a></li>
+          <li><a href="licence.html">Licence (EULA)</a></li>
+          <li><a href="third-party-notices.html">Third-party notices</a></li>
+          <li><a href="hd-worlds.html">HD World installation</a></li>
+          <li><a href="../support.html">Support</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <script src="../v1.js"></script>
+</body>
+</html>

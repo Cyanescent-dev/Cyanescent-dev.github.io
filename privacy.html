@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy — Cyanescent Player 1.0.0</title>
+  <meta name="description" content="What Cyanescent Player and this website do with your data.">
+  <meta name="theme-color" content="#06070d">
+  <link rel="canonical" href="https://cyanescent-dev.github.io/privacy.html">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/v1/icon-64.png">
+  <link rel="apple-touch-icon" href="assets/v1/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="v1.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="nav">
+    <nav class="wrap nav-inner" aria-label="Primary">
+      <a href="./" class="brand"><img src="assets/v1/icon-64.png" alt="" width="30" height="30">Cyanescent</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="visually-hidden">Menu</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="./#editions">Editions</a></li>
+        <li><a href="./#licence">Licence</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="psy-roller/">Psy-Roller</a></li>
+        <li><a href="./#download" class="btn btn-primary btn-sm">Download Free</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="doc">
+    <div class="wrap doc-inner">
+      <h1>Privacy</h1>
+      <p class="doc-meta">Applies to Cyanescent Player 1.0.0 and this website.</p>
+
+      <h2 id="player">Cyanescent Player</h2>
+      <ul>
+        <li><strong>No account and no licence check.</strong> The Player has no sign-in and doesn’t contact a licensing or activation server.</li>
+        <li><strong>No analytics.</strong> The Player doesn’t include analytics, advertising or telemetry.</li>
+        <li><strong>Your music stays where it is.</strong> Playlists store references to your files, along with your settings, on your Mac in <code>~/Library/Application Support/Cyanescent Player/</code>. Music and exports aren’t uploaded anywhere.</li>
+        <li><strong>Audio input is analysed on your Mac.</strong> Microphone, interface and System Audio capture are used only to drive the visuals, and only after you grant macOS permission.</li>
+        <li><strong>Fonts.</strong> When online, the Player requests two typefaces (Exo 2 and Michroma) from Google Fonts. As with any web request, Google receives your IP address and basic request details. See the <a href="docs/third-party-notices.html">third-party notices</a>.</li>
+        <li><strong>Links you choose to open.</strong> The website link in the About window opens this site in your browser only when you click it.</li>
+      </ul>
+
+      <h2 id="website">This website</h2>
+      <p>This site is a static website hosted by GitHub Pages. It sets no cookies and uses no analytics or tracking scripts. GitHub, which hosts the site and its downloads, and Google Fonts, which serves the site’s typefaces, process standard request information such as your IP address under their own privacy policies.</p>
+
+      <h2 id="purchases">Purchases</h2>
+      <p>Pro is sold through a third-party checkout provider that processes your payment and email address in order to deliver your download and receipt. Its privacy notice is shown at checkout. Cyanescent never receives your card details.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <p>Cyanescent Player 1.0.0 · © 2026 Samuel Ferguson. All rights reserved.</p>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="docs/quick-start.html">Quick Start</a></li>
+          <li><a href="docs/licence.html">Licence (EULA)</a></li>
+          <li><a href="docs/third-party-notices.html">Third-party notices</a></li>
+          <li><a href="docs/hd-worlds.html">HD World installation</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="psy-roller/">Psy-Roller</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <script src="v1.js"></script>
+</body>
+</html>

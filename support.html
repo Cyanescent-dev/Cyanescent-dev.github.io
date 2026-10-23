@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Cyanescent Player 1.0.0</title>
+  <meta name="description" content="Installation help, troubleshooting and how to report a problem with Cyanescent Player 1.0.0.">
+  <meta name="theme-color" content="#06070d">
+  <link rel="canonical" href="https://cyanescent-dev.github.io/support.html">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/v1/icon-64.png">
+  <link rel="apple-touch-icon" href="assets/v1/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="v1.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="nav">
+    <nav class="wrap nav-inner" aria-label="Primary">
+      <a href="./" class="brand"><img src="assets/v1/icon-64.png" alt="" width="30" height="30">Cyanescent</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="visually-hidden">Menu</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="./#editions">Editions</a></li>
+        <li><a href="./#licence">Licence</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+        <li><a href="psy-roller/">Psy-Roller</a></li>
+        <li><a href="./#download" class="btn btn-primary btn-sm">Download Free</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="doc">
+    <div class="wrap doc-inner">
+      <h1>Support</h1>
+      <p class="doc-meta">Cyanescent Player 1.0.0 (build 2)</p>
+
+      <h2 id="guides">Guides</h2>
+      <ul>
+        <li><a href="docs/quick-start.html">Quick Start</a>: requirements, installation, playlists, Adaptive playback, Export Studio, live audio and Pocket Scion.</li>
+        <li><a href="docs/hd-worlds.html">HD World installation</a>: installing and removing optional Pro Video worlds.</li>
+        <li><a href="docs/licence.html">Licence agreement (EULA)</a> and <a href="docs/third-party-notices.html">third-party notices</a>.</li>
+        <li><a href="privacy.html">Privacy</a>: what the Player and this website do with your data.</li>
+      </ul>
+
+      <h2 id="install">Installing safely</h2>
+      <p>Download Cyanescent Player only from this website. Every release is signed with a Developer ID and notarised by Apple, so it opens normally. Check the download against the SHA-256 checksum on the <a href="./#download">download section</a> if you want to verify it:</p>
+      <pre><code>shasum -a 256 ~/Downloads/Cyanescent-Player-Free-1.0.0-macOS-universal.zip</code></pre>
+      <p>If macOS reports that a download is damaged, from an unidentified developer or unverified, stop and download it again from this site. Don’t disable Gatekeeper or remove quarantine to open it.</p>
+
+      <h2 id="troubleshooting">Common problems</h2>
+      <ul>
+        <li><strong>Visuals stall or stutter:</strong> let the first shader load finish, switch to Standard quality and close other GPU-heavy applications.</li>
+        <li><strong>Live input is silent:</strong> check the selected Audio Source, device connection and gain. In System Settings → Privacy &amp; Security, review Microphone access for external input, or Screen &amp; System Audio Recording access for native System Audio capture (macOS 14.2 or later).</li>
+        <li><strong>Missing music:</strong> reconnect the drive that holds your files, or use the recovery controls in Music Playlists to locate them again.</li>
+        <li><strong>Pocket Scion not responding:</strong> use a data-capable USB cable and confirm the device appears in Audio MIDI Setup, then choose Options → Audio Source → Scion Mode.</li>
+      </ul>
+      <p>The <a href="docs/quick-start.html#troubleshooting-and-removal">Quick Start</a> covers these in more detail, including how to uninstall an edition without losing shared playlists.</p>
+
+      <h2 id="report">Reporting a problem</h2>
+      <p>Bug reports are welcome on the Cyanescent Player issue tracker on GitHub:</p>
+      <p><a class="btn btn-ghost" href="https://github.com/Cyanescent-dev/Cyanescent-Player/issues" rel="noopener noreferrer">Open the issue tracker</a></p>
+      <p>Please include your edition (Free or Pro), the version and build shown in the application menu → About, your macOS version and Mac model, and what you did before the problem appeared.</p>
+      <p>Issue reports are public. Never post passwords, purchase receipts, private keys, or log and playlist files that contain personal folder paths.</p>
+
+      <h2 id="purchases">Purchases and receipts</h2>
+      <p>Pro purchases, receipts and the download email are handled by the checkout provider shown at purchase. Its purchase, refund and cancellation terms are shown before you pay and don’t reduce your statutory rights.</p>
+
+      <h2 id="earlier-releases">Earlier releases</h2>
+      <p>Cyanescent Player 1.0.0 supersedes the 0.9 Preview and 0.9 Fungal Edition. Those previews contain known bugs and older preset implementations, and are no longer offered. Free 1.0.0 is the recommended replacement.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <p>Cyanescent Player 1.0.0 · © 2026 Samuel Ferguson. All rights reserved.</p>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="docs/quick-start.html">Quick Start</a></li>
+          <li><a href="docs/licence.html">Licence (EULA)</a></li>
+          <li><a href="docs/third-party-notices.html">Third-party notices</a></li>
+          <li><a href="docs/hd-worlds.html">HD World installation</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="psy-roller/">Psy-Roller</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <script src="v1.js"></script>
+</body>
+</html>
