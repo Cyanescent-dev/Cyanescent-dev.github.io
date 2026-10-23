@@ -83,6 +83,10 @@ for path, p in parsed.items():
         if frag and target.suffix == ".html":
             if frag not in parsed.get(target, Page()).ids:
                 errors.append(f"{rel}: missing anchor #{frag} in {target.relative_to(ROOT)}")
+        if target.suffix.lower() in (".mp4", ".m4v", ".mov", ".webm"):
+            size = target.stat().st_size
+            if size > 100_000_000:
+                errors.append(f"{rel}: {ref} is {size:,} bytes; GitHub rejects files over 100 MB")
         if target.suffix.lower() in (".jpg", ".jpeg", ".png", ".avif", ".webp", ".gif"):
             size = target.stat().st_size
             if size > MAX_IMAGE_BYTES:
