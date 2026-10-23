@@ -291,46 +291,7 @@
           </div>
         </div>
 
-        <figure class="engine reveal" data-engine>
-          <div class="engine-head">
-            <div>
-              <h3>Inside the analysis</h3>
-              <p>A simulated 145 BPM psytrance track, showing the kinds of measurements the Player makes and passes to presets. The values are illustrative, not a recording.</p>
-            </div>
-            <div class="engine-controls">
-              <button type="button" class="btn btn-ghost btn-sm" data-engine-play aria-pressed="false">Play</button>
-            </div>
-          </div>
-          <div class="engine-body">
-            <div class="engine-plot">
-              <svg class="engine-svg" viewBox="0 0 1000 392" role="img" aria-labelledby="engine-title engine-desc" data-engine-svg>
-                <title id="engine-title">Simulated track analysis</title>
-                <desc id="engine-desc">Lanes for a 64-bar track: a beat and phrase grid; the waveform; low, mid and high frequency bands; energy sections from 1 to 5; a drop map with lead-in ramps for two major drops and a short fill marked as not a drop; and Adaptive preset transitions landing on phrase boundaries. A playhead shows lookahead windows 0.5, 5 and 20 seconds ahead.</desc>
-              </svg>
-              <label class="engine-scrub">
-                <span class="visually-hidden">Position in the simulated track</span>
-                <input type="range" min="0" max="255.75" step="0.25" value="92" data-engine-scrub>
-              </label>
-            </div>
-            <aside class="engine-signals" aria-label="Signals sent to presets at the playhead">
-              <p class="engine-signals-title">Sent to every preset, each frame</p>
-              <dl data-engine-signals>
-                <div class="sig sig--wide"><dt>Tempo · beat</dt><dd><span data-sig="bpm">145 BPM</span><span class="beat-dots" data-sig="beatdots" aria-hidden="true"><i></i><i></i><i></i><i></i></span></dd></div>
-                <div class="sig sig--wide"><dt>Bar · phrase</dt><dd><span data-sig="bar">—</span><span class="sig-bar"><span data-bar="phrase"></span></span></dd></div>
-                <div class="sig"><dt>Low</dt><dd><span class="sig-bar"><span data-bar="low"></span></span></dd></div>
-                <div class="sig"><dt>Mids</dt><dd><span class="sig-bar"><span data-bar="mid"></span></span></dd></div>
-                <div class="sig"><dt>Highs</dt><dd><span class="sig-bar"><span data-bar="high"></span></span></dd></div>
-                <div class="sig"><dt>Kick</dt><dd><span class="sig-bar"><span data-bar="kick"></span></span></dd></div>
-                <div class="sig"><dt>Energy now</dt><dd><span class="sig-bar"><span data-bar="energy"></span></span></dd></div>
-                <div class="sig"><dt>Energy in 20 s</dt><dd><span class="sig-bar"><span data-bar="future"></span></span></dd></div>
-                <div class="sig sig--wide"><dt>Upcoming drop</dt><dd><span data-sig="drop">—</span><span class="sig-bar"><span data-bar="upcoming"></span></span></dd></div>
-                <div class="sig sig--wide"><dt>Musical role</dt><dd><span class="role-chip" data-sig="role">—</span></dd></div>
-              </dl>
-            </aside>
-          </div>
-          <noscript><p class="fine">This interactive readout needs JavaScript. In short: the Player builds a beat and phrase grid, measures frequency bands and energy, maps drops ahead of time, and passes all of it to every preset as the music plays.</p></noscript>
-        </figure>
-        <p class="fine reveal" style="margin-top:1.25rem">Live input works too. With a microphone, an audio interface or System Audio, the Player tracks tempo and phrases on the fly and reacts to energy and structure as they arrive. Whole-track lookahead and the drop map are available when it plays tracks from your library.</p>
+        <p class="fine reveal" style="margin-top:2rem">Live input works too. With a microphone, an audio interface or System Audio, the Player tracks tempo and phrases on the fly and reacts to energy and structure as they arrive. Whole-track lookahead and the drop map are available when it plays tracks from your library.</p>
       </div>
     </section>
 
@@ -725,6 +686,5 @@
   </footer>
 
   <script src="v1.js"></script>
-  <script src="engine-demo.js"></script>
 </body>
 </html>
