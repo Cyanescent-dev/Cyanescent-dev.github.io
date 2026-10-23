@@ -1321,6 +1321,13 @@ code {
   vertical-align: top;
 }
 
+.row-note {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
 .compare thead th {
   font-family: var(--font-display);
   color: var(--text);

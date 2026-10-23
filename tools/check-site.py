@@ -24,6 +24,8 @@ PAGES = sorted(
     if not {".git", "_source", "_launch"} & set(p.parts)
 )
 MAX_IMAGE_BYTES = 400_000
+FREE_ZIP = "downloads/Cyanescent-Player-Free-1.0.0-macOS-universal.zip"
+FREE_SHA256 = "f0da79ba2373dcb0d64a99fa7c669e18d0129150c6874091f2cf5368c66d0b05"
 
 errors, warnings = [], []
 
@@ -135,9 +137,8 @@ index = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", (ROOT / "index.html").read_t
 FACTS = [
     "18 curated", "75 real-time visual presets", "77 core presets", "Up to 83 presets",
     "$5", "$15", "$30", "up to 1080p", "up to 4K", "macOS 12 or later", "macOS 14.2",
-    "Not yet available to buy", "e62bbb934a209f318cd49e318f6840e9e82f5fc15b26d8424fd67e80729efcc7",
-    "7,643,421 bytes", "Buy once.", "Create forever.",
-    "3619a69083bd35249cb1ae4e8a6041c20a29c281e8baed4264bef4904d384370", "20,310,870 bytes",
+    "Not yet available to buy", FREE_SHA256, "7,661,960 bytes", "Buy once.", "Create forever.",
+    "1eb6609b6228d542360d22f4408cecd97f6f034bf3558f3ef9ebfd6b31b39c61", "20,350,786 bytes",
     "Launch price $5 — regular price $15", "Lemon Squeezy", "Coming soon",
     "Milkrunner", "Psy-Roller",
 ]
@@ -161,6 +162,22 @@ for required in (
 ):
     if required not in raw_index:
         errors.append(f"index.html: companion product link missing: {required}")
+
+# 5c. Release artifacts: only the verified Free ZIP may be hosted here
+import hashlib
+free = ROOT / FREE_ZIP
+if not free.exists():
+    errors.append(f"missing hosted Free download {FREE_ZIP}")
+elif hashlib.sha256(free.read_bytes()).hexdigest() != FREE_SHA256:
+    errors.append(f"{FREE_ZIP} does not match the verified SHA-256")
+for f in ROOT.rglob("*"):
+    if ".git" in f.parts or not f.is_file():
+        continue
+    name = f.name.lower()
+    if re.search(r"(pro|pro-video|hd-world|submission).*\.(zip|dmg|pkg)$", name) or name.endswith(".dmg"):
+        errors.append(f"paid or unreleased artifact present in the site: {f.relative_to(ROOT)}")
+    if f.stat().st_size > 100_000_000:
+        errors.append(f"{f.relative_to(ROOT)} exceeds GitHub's 100 MB file limit")
 
 # 6. Launch-pending controls
 for path, p in parsed.items():
