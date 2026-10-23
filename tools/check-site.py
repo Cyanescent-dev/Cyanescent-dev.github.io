@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Pre-publication checks for the Cyanescent website.
 
-  python3 tools/check-site.py            # preview: pending launch links are warnings
-  python3 tools/check-site.py --launch   # launch: pending launch links are errors
+  python3 tools/check-site.py                          # preview: pending items are warnings
+  python3 tools/check-site.py --stage precommerce      # public site, Free download live, Pro checkout deliberately off
+  python3 tools/check-site.py --stage commercial --purchase-verified <pro-zip-sha256>
+                                                       # full launch: live checkout + verified purchase download
+  (--launch is an alias for --stage commercial)
 
 Checks every local page for broken internal links, anchors and images,
 oversized media, retired 0.9 download links, any Pro Video checkout or
@@ -18,7 +21,18 @@ from pathlib import Path
 from urllib.parse import urldefrag, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
-LAUNCH = "--launch" in sys.argv
+def _arg(name):
+    if name in sys.argv:
+        i = sys.argv.index(name)
+        return sys.argv[i + 1] if i + 1 < len(sys.argv) else ""
+    return None
+
+STAGE = _arg("--stage") or ("commercial" if "--launch" in sys.argv else "preview")
+if STAGE not in ("preview", "precommerce", "commercial"):
+    sys.exit(f"unknown stage {STAGE!r}")
+LAUNCH = STAGE != "preview"
+PRO_SHA256 = "1eb6609b6228d542360d22f4408cecd97f6f034bf3558f3ef9ebfd6b31b39c61"
+PRECOMMERCE_PENDING = {"pro-checkout", "pro-checkout-note"}
 PAGES = sorted(
     p for p in ROOT.rglob("*.html")
     if not {".git", "_source", "_launch"} & set(p.parts)
@@ -190,13 +204,23 @@ else:
         (errors if LAUNCH else warnings).append("index.html: Pro button uses a TEST checkout link; never deploy it")
     if href and not re.match(r"^https://cyanescent\.lemonsqueezy\.com/(checkout/)?buy/[0-9a-f-]{36}/?$", href.group(1)):
         errors.append(f"index.html: unexpected Pro checkout URL {href.group(1)}")
-    if LAUNCH and not href:
-        errors.append("index.html: Pro checkout URL not set (tools/set-checkout-url.py)")
+    if STAGE == "precommerce":
+        if href or 'aria-disabled="true"' not in tag or 'data-launch-pending="pro-checkout"' not in tag:
+            errors.append("precommerce: the Pro checkout must be deliberately disabled (tools/set-checkout-url.py --reset)")
+    if STAGE == "commercial":
+        if not href:
+            errors.append("commercial: Pro checkout URL not set (tools/set-checkout-url.py)")
+        verified = _arg("--purchase-verified")
+        if verified != PRO_SHA256:
+            errors.append("commercial: pass --purchase-verified <sha256 of the ZIP downloaded from a real purchase>; "
+                          "it must equal the approved Pro SHA-256")
 
 # 6. Launch-pending controls
 for path, p in parsed.items():
     for name in p.pending:
         msg = f"{path.relative_to(ROOT)}: launch-pending control '{name}'"
+        if STAGE == "precommerce" and name in PRECOMMERCE_PENDING:
+            continue  # Pro checkout is deliberately off before commerce launch
         (errors if LAUNCH else warnings).append(msg)
 
 # 7. Psy-Roller and its shared assets unchanged from main
@@ -215,5 +239,5 @@ for w in warnings:
 for e in errors:
     print(f"ERROR: {e}")
 print(f"\n{len(PAGES)} pages checked · {len(errors)} errors · {len(warnings)} warnings"
-      f" · mode: {'launch' if LAUNCH else 'preview'}")
+      f" · stage: {STAGE}")
 sys.exit(1 if errors else 0)

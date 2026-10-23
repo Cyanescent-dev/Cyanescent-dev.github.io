@@ -1,5 +1,13 @@
 # V1 launch — publication steps
 
+Two launch stages, each with its own check:
+
+- **Pre-commerce public launch** (site live, Free download on, Pro checkout
+  deliberately off, Pro Video coming soon):
+  `python3 tools/check-site.py --stage precommerce`
+- **Full commercial launch** (live checkout and verified purchase download):
+  `python3 tools/check-site.py --stage commercial --purchase-verified <sha256 of the ZIP from a real purchase>`
+
 The `v1-launch` branch holds the Cyanescent Player 1.0 site. GitHub Pages
 builds `main` from the repository root (legacy build), so **merging to `main`
 and pushing is the deployment**. Nothing in this branch is live until then.
@@ -73,7 +81,7 @@ add the contact, then delete the `pending-note` paragraph and the
 `data-launch-pending="refund-policy"` attribute.
 
 ```bash
-python3 tools/check-site.py --launch   # must report 0 errors
+python3 tools/check-site.py --stage commercial --purchase-verified <sha256>   # must report 0 errors
 ```
 
 ## 4. Preview locally, then deploy
