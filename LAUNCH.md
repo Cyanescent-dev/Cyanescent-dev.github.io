@@ -11,8 +11,9 @@ and pushing is the deployment**. Nothing in this branch is live until then.
       7,643,421 bytes, SHA-256
       `e62bbb934a209f318cd49e318f6840e9e82f5fc15b26d8424fd67e80729efcc7`.
 - [ ] Pro ZIP notarised, stapled and accepted, with its final SHA-256.
-- [ ] Checkout product created, tested in the provider's test mode, and
-      delivering the exact accepted Pro ZIP.
+- [ ] Lemon Squeezy product created, tested in test mode, and delivering the
+      exact accepted Pro ZIP (setup checklist:
+      `_launch/PRO-CHECKOUT-LEMON-SQUEEZY.md`, kept out of git).
 - [ ] Seller, purchase, refund and cancellation disclosures confirmed for the
       checkout provider.
 
