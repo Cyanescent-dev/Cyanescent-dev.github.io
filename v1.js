@@ -65,7 +65,7 @@
   /* ─── Pause decorative animation when off-screen ─── */
 
   if ('IntersectionObserver' in window) {
-    var animated = document.querySelectorAll('.portal, .adaptive-playhead');
+    var animated = document.querySelectorAll('.portal');
     var animObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         var state = entry.isIntersecting ? 'running' : 'paused';

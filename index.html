@@ -270,85 +270,67 @@
         <p class="eyebrow reveal">The Adaptive engine</p>
         <h2 id="features-title" class="section-title reveal">The music is the director</h2>
         <p class="section-lede reveal">
-          Cyanescent doesn’t paste a waveform over a screensaver. It listens to the structure of a track and lets that shape what you see, from the smallest pulse to the moment one world gives way to the next.
+          Before a track plays, Cyanescent analyses all of it: tempo, beats, phrases, frequency bands, energy and the drops still to come. Every preset then receives that understanding, frame by frame, so the visuals answer the music as it happens and anticipate what’s next.
         </p>
 
         <div class="flow">
           <div class="flow-step reveal">
             <span class="num" aria-hidden="true">1</span>
-            <h3>Listen</h3>
-            <p>When a track plays from your library, the Player analyses the whole song: its beat grid, energy sections and where the drops are. Live input responds to the audio as it arrives.</p>
+            <h3>Hears the whole track</h3>
+            <p>The Player finds the tempo and a beat grid, then groups beats into bars and 8, 16 and 32-beat phrases. It measures low, mid and high frequencies, kick, brightness and density, and maps the song into energy sections.</p>
           </div>
           <div class="flow-step reveal">
             <span class="num" aria-hidden="true">2</span>
-            <h3>Respond</h3>
-            <p>Every preset is driven by that musical state. Low end, kicks and rising energy move light, form and camera, and presets can anticipate a drop instead of reacting late.</p>
+            <h3>Knows what’s coming</h3>
+            <p>Lookahead windows 0.5, 5 and 20 seconds ahead give a sense of what’s about to happen. A drop map finds each drop from five cues (low end returning, a fuller section, the kick coming back, a riser, the length of the break), telling real drops from short fills. It holds even after you seek.</p>
           </div>
           <div class="flow-step reveal">
             <span class="num" aria-hidden="true">3</span>
-            <h3>Choreograph</h3>
-            <p>In <strong>Adaptive</strong> mode, changes between visual worlds are timed to the music’s structure and energy, with rendered transitions between presets. Adaptive Time sets how long each world tends to stay.</p>
+            <h3>Feeds every preset</h3>
+            <p>Each frame, presets receive bands and kicks, beat and phrase position, energy now and ahead, and how far away the next drop is, along with the music’s current role. Each world interprets these in its own way. Adaptive mode lands preset changes on phrase boundaries.</p>
           </div>
         </div>
 
-        <figure class="adaptive-demo reveal">
-          <div class="adaptive-demo-head">
-            <h3>How Adaptive follows a track</h3>
-            <p>Simplified illustration, not a recording</p>
+        <figure class="engine reveal" data-engine>
+          <div class="engine-head">
+            <div>
+              <h3>Inside the analysis</h3>
+              <p>A simulated 145 BPM psytrance track, showing the kinds of measurements the Player makes and passes to presets. The values are illustrative, not a recording.</p>
+            </div>
+            <div class="engine-controls">
+              <button type="button" class="btn btn-ghost btn-sm" data-engine-play aria-pressed="false">Play</button>
+            </div>
           </div>
-          <svg class="adaptive-svg" viewBox="0 0 960 236" role="img" aria-labelledby="adaptive-svg-title adaptive-svg-desc">
-            <title id="adaptive-svg-title">Diagram of Adaptive mode</title>
-            <desc id="adaptive-svg-desc">A track's waveform divided into energy sections: intro, build, drop, breakdown, and a second drop. Visual changes are marked where the structure changes, and each section is shaded with the colour of the visual world playing at the time.</desc>
-            <defs>
-              <linearGradient id="g-wave" x1="0" x2="1">
-                <stop offset="0" stop-color="#5ef0ff"/>
-                <stop offset="0.5" stop-color="#9b7bff"/>
-                <stop offset="1" stop-color="#ff5bd6"/>
-              </linearGradient>
-            </defs>
-            <!-- world bands -->
-            <rect x="0" y="26" width="190" height="170" fill="#5ef0ff" opacity="0.07"/>
-            <rect x="190" y="26" width="240" height="170" fill="#9b7bff" opacity="0.09"/>
-            <rect x="430" y="26" width="200" height="170" fill="#ff5bd6" opacity="0.09"/>
-            <rect x="630" y="26" width="130" height="170" fill="#b6ff6b" opacity="0.07"/>
-            <rect x="760" y="26" width="200" height="170" fill="#ffcf6b" opacity="0.09"/>
-            <!-- waveform envelope -->
-            <path transform="translate(0 18)" fill="url(#g-wave)" opacity="0.85" d="M0 95 L0 95 C40 88 80 86 120 84 C150 82 170 80 190 80 C240 76 300 66 350 56 C390 48 415 40 430 30 C470 28 560 27 630 30 C660 70 700 82 760 84 C780 40 800 28 830 27 C880 26 930 28 960 30 L960 160 C930 162 880 164 830 163 C800 162 780 150 760 106 C700 108 660 120 630 160 C560 163 470 162 430 160 C415 150 390 142 350 134 C300 124 240 114 190 110 C170 110 150 108 120 106 C80 104 40 102 0 95 Z"/>
-            <!-- section labels -->
-            <g fill="#b9c0d8" font-size="13">
-              <text x="12" y="18">Intro</text>
-              <text x="202" y="18">Build</text>
-              <text x="442" y="18">Drop</text>
-              <text x="642" y="18">Breakdown</text>
-              <text x="772" y="18">Drop</text>
-            </g>
-            <!-- change markers -->
-            <g stroke="#eef1fb" stroke-width="2" stroke-dasharray="4 5">
-              <line x1="190" y1="26" x2="190" y2="196"/>
-              <line x1="430" y1="26" x2="430" y2="196"/>
-              <line x1="630" y1="26" x2="630" y2="196"/>
-              <line x1="760" y1="26" x2="760" y2="196"/>
-            </g>
-            <g fill="#eef1fb" font-size="12" text-anchor="middle">
-              <text x="190" y="218">change</text>
-              <text x="430" y="218">on the drop</text>
-              <text x="630" y="218">change</text>
-              <text x="760" y="218">on the drop</text>
-            </g>
-            <!-- playhead -->
-            <g class="adaptive-playhead">
-              <line x1="0" y1="26" x2="0" y2="196" stroke="#ffffff" stroke-width="2"/>
-              <circle cx="0" cy="26" r="5" fill="#ffffff"/>
-            </g>
-          </svg>
-          <ul class="adaptive-legend" aria-label="Visual worlds in the illustration">
-            <li><i style="background:#5ef0ff"></i>World A</li>
-            <li><i style="background:#9b7bff"></i>World B</li>
-            <li><i style="background:#ff5bd6"></i>World C</li>
-            <li><i style="background:#b6ff6b"></i>World D</li>
-            <li><i style="background:#ffcf6b"></i>World E</li>
-          </ul>
+          <div class="engine-body">
+            <div class="engine-plot">
+              <svg class="engine-svg" viewBox="0 0 1000 392" role="img" aria-labelledby="engine-title engine-desc" data-engine-svg>
+                <title id="engine-title">Simulated track analysis</title>
+                <desc id="engine-desc">Lanes for a 64-bar track: a beat and phrase grid; the waveform; low, mid and high frequency bands; energy sections from 1 to 5; a drop map with lead-in ramps for two major drops and a short fill marked as not a drop; and Adaptive preset transitions landing on phrase boundaries. A playhead shows lookahead windows 0.5, 5 and 20 seconds ahead.</desc>
+              </svg>
+              <label class="engine-scrub">
+                <span class="visually-hidden">Position in the simulated track</span>
+                <input type="range" min="0" max="255.75" step="0.25" value="92" data-engine-scrub>
+              </label>
+            </div>
+            <aside class="engine-signals" aria-label="Signals sent to presets at the playhead">
+              <p class="engine-signals-title">Sent to every preset, each frame</p>
+              <dl data-engine-signals>
+                <div class="sig sig--wide"><dt>Tempo · beat</dt><dd><span data-sig="bpm">145 BPM</span><span class="beat-dots" data-sig="beatdots" aria-hidden="true"><i></i><i></i><i></i><i></i></span></dd></div>
+                <div class="sig sig--wide"><dt>Bar · phrase</dt><dd><span data-sig="bar">—</span><span class="sig-bar"><span data-bar="phrase"></span></span></dd></div>
+                <div class="sig"><dt>Low</dt><dd><span class="sig-bar"><span data-bar="low"></span></span></dd></div>
+                <div class="sig"><dt>Mids</dt><dd><span class="sig-bar"><span data-bar="mid"></span></span></dd></div>
+                <div class="sig"><dt>Highs</dt><dd><span class="sig-bar"><span data-bar="high"></span></span></dd></div>
+                <div class="sig"><dt>Kick</dt><dd><span class="sig-bar"><span data-bar="kick"></span></span></dd></div>
+                <div class="sig"><dt>Energy now</dt><dd><span class="sig-bar"><span data-bar="energy"></span></span></dd></div>
+                <div class="sig"><dt>Energy in 20 s</dt><dd><span class="sig-bar"><span data-bar="future"></span></span></dd></div>
+                <div class="sig sig--wide"><dt>Upcoming drop</dt><dd><span data-sig="drop">—</span><span class="sig-bar"><span data-bar="upcoming"></span></span></dd></div>
+                <div class="sig sig--wide"><dt>Musical role</dt><dd><span class="role-chip" data-sig="role">—</span></dd></div>
+              </dl>
+            </aside>
+          </div>
+          <noscript><p class="fine">This interactive readout needs JavaScript. In short: the Player builds a beat and phrase grid, measures frequency bands and energy, maps drops ahead of time, and passes all of it to every preset as the music plays.</p></noscript>
         </figure>
+        <p class="fine reveal" style="margin-top:1.25rem">Live input works too. With a microphone, an audio interface or System Audio, the Player tracks tempo and phrases on the fly and reacts to energy and structure as they arrive. Whole-track lookahead and the drop map are available when it plays tracks from your library.</p>
       </div>
     </section>
 
@@ -743,5 +725,6 @@
   </footer>
 
   <script src="v1.js"></script>
+  <script src="engine-demo.js"></script>
 </body>
 </html>
