@@ -60,15 +60,13 @@ The Pro ZIP is **not** uploaded to GitHub. It's delivered only by Lemon Squeezy.
 
 ## 3. Activate the gated controls
 
-Search for `data-launch-pending`. There are five in `index.html` and one in `support.html`.
+Search for `data-launch-pending`. There are four in `index.html` and one in `support.html`.
 
 - Free button: add `href="<verified public ZIP URL>"`, delete `role="link"`,
   `aria-disabled="true"` and `data-launch-pending="free-download"`, and delete
   the `free-download-note` line.
 - Pro button: add `href="<live checkout URL>"`, delete the same three attributes,
   and delete the `pro-checkout-note` line.
-- `index.html` Export Studio placeholder: replace with your real screenshot
-  (spec in `_launch/EXPORT-STUDIO-SCREENSHOT.md`) and remove `data-launch-pending`.
 - `support.html`: once the refund wording is approved, add the support contact,
   delete the `pending-note` paragraph and the `data-launch-pending` attribute.
 
