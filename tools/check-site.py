@@ -179,6 +179,20 @@ for f in ROOT.rglob("*"):
     if f.stat().st_size > 100_000_000:
         errors.append(f"{f.relative_to(ROOT)} exceeds GitHub's 100 MB file limit")
 
+# 5d. Pro checkout link: live Lemon Squeezy hosted checkout only
+pro_btn = re.search(r'<a id="pro-checkout"[^>]*>', raw_index)
+if not pro_btn:
+    errors.append("index.html: #pro-checkout button missing")
+else:
+    tag = pro_btn.group(0)
+    href = re.search(r'href="([^"]+)"', tag)
+    if 'data-checkout="test"' in tag:
+        (errors if LAUNCH else warnings).append("index.html: Pro button uses a TEST checkout link; never deploy it")
+    if href and not re.match(r"^https://cyanescent\.lemonsqueezy\.com/(checkout/)?buy/[0-9a-f-]{36}/?$", href.group(1)):
+        errors.append(f"index.html: unexpected Pro checkout URL {href.group(1)}")
+    if LAUNCH and not href:
+        errors.append("index.html: Pro checkout URL not set (tools/set-checkout-url.py)")
+
 # 6. Launch-pending controls
 for path, p in parsed.items():
     for name in p.pending:

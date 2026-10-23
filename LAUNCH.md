@@ -51,16 +51,22 @@ or HD World archive appears). It's delivered only by Lemon Squeezy.
    Refund it afterwards if a real payment was taken.
 4. Copy the live hosted checkout URL (`https://<store>.lemonsqueezy.com/buy/…`).
 
-## 3. Activate the gated controls
+## 3. Insert the checkout link and ungate
 
-Search for `data-launch-pending`. There are two in `index.html` (Pro button and note) and one in `support.html`.
+Use the **live** hosted checkout link from Lemon Squeezy (Products → Cyanescent
+Player Pro → Share). It has the form `https://cyanescent.lemonsqueezy.com/buy/<uuid>`
+(or `/checkout/buy/<uuid>`), with no query parameters.
 
-- Pro button: add `href="<live checkout URL>"`, delete the same three attributes,
-  and delete the `pro-checkout-note` line.
-- `support.html`: once the refund wording is approved, add the support contact,
-  delete the `pending-note` paragraph and the `data-launch-pending` attribute.
+```bash
+python3 tools/set-checkout-url.py https://cyanescent.lemonsqueezy.com/buy/<uuid>
+```
 
-Then:
+For local testing with a test-mode link, use `--test` instead. The launch check
+refuses to pass while a test link is present. Undo with `--reset`.
+
+Once the refund wording and support contact are approved, edit `support.html`:
+add the contact, then delete the `pending-note` paragraph and the
+`data-launch-pending="refund-policy"` attribute.
 
 ```bash
 python3 tools/check-site.py --launch   # must report 0 errors

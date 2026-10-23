@@ -673,6 +673,10 @@ code {
 .shot {
   aspect-ratio: 16 / 9;
   align-self: stretch;
+  /* Keep the cell's width: without this, a stretched tile derives its
+     width from aspect-ratio and spills past the grid. */
+  width: 100%;
+  min-width: 0;
 }
 
 .shot button {
@@ -1733,6 +1737,7 @@ code {
 .doc p,
 .doc li {
   color: var(--text-soft);
+  overflow-wrap: anywhere;
 }
 
 .doc strong {
