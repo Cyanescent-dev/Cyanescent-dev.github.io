@@ -546,12 +546,6 @@ code {
   object-fit: cover;
 }
 
-.portal-caption {
-  margin-top: 1.4rem;
-  text-align: center;
-  font-size: 0.82rem;
-  color: var(--text-dim);
-}
 
 @keyframes portal-spin {
   to {
