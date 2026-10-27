@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """Pre-publication checks for the Cyanescent website.
 
-  python3 tools/check-site.py                          # preview: pending items are warnings
-  python3 tools/check-site.py --stage precommerce      # public site, Free download live, Pro checkout deliberately off
-  python3 tools/check-site.py --stage commercial --purchase-verified <pro-zip-sha256>
-                                                       # full launch: live checkout + verified purchase download
+  python3 tools/check-site.py                         # preview: pending items are warnings
+  python3 tools/check-site.py --stage commercial      # deploy gate for the live store
+  python3 tools/check-site.py --stage commercial \
+      --purchase-verified <sha256 of Pro ZIP from a real purchase> \
+      --purchase-verified-pro-video <sha256 of Pro Video ZIP from a real purchase>
+                                                      # records end-to-end purchase verification
   (--launch is an alias for --stage commercial)
 
 Checks every local page for broken internal links, anchors and images,
-oversized media, retired 0.9 download links, any Pro Video checkout or
-download, misleading activation/licensing wording, the published edition
-facts, and that Psy-Roller is unchanged from main.
+oversized media, retired 0.9 download links, checkout links (only the two
+approved live Lemon Squeezy URLs, on the matching product's buttons),
+misleading activation/licensing wording, the published edition facts, the
+hosted Free ZIP's checksum, that no paid or unreleased archive is in the
+site, and that Psy-Roller is unchanged from main.
 """
 
 import re
@@ -28,18 +32,26 @@ def _arg(name):
     return None
 
 STAGE = _arg("--stage") or ("commercial" if "--launch" in sys.argv else "preview")
-if STAGE not in ("preview", "precommerce", "commercial"):
+if STAGE not in ("preview", "commercial"):
     sys.exit(f"unknown stage {STAGE!r}")
 LAUNCH = STAGE != "preview"
-PRO_SHA256 = "1eb6609b6228d542360d22f4408cecd97f6f034bf3558f3ef9ebfd6b31b39c61"
-PRECOMMERCE_PENDING = {"pro-checkout", "pro-checkout-note"}
+
+# Final V1 release (build/V1.0 Notarised/RELEASE_MANIFEST.md).
+PRO_SHA256 = "19346048d61960fc50f2518b6877d0abcaad3356daf5851a72e49767c426bf85"
+PRO_VIDEO_SHA256 = "4dee485499b3e53a5d1a211ffb5cc89b8658be00475bd8e10fb4a8b86c0e5568"
+# Live Lemon Squeezy hosted checkouts supplied by the store owner.
+CHECKOUT = {
+    "pro": "https://cyanescent.lemonsqueezy.com/checkout/buy/1d36466c-93bf-4019-ba51-ee53cd6b783d",
+    "pro-video": "https://cyanescent.lemonsqueezy.com/checkout/buy/e1ccdd99-cb67-4d79-9869-3b983bb1122e",
+}
+HD_WORLDS_PAGE = "https://132.145.31.40.sslip.io/downloads/cyanescent/hd-worlds.html"
 PAGES = sorted(
     p for p in ROOT.rglob("*.html")
     if not {".git", "_source", "_launch"} & set(p.parts)
 )
 MAX_IMAGE_BYTES = 400_000
-FREE_ZIP = "downloads/Cyanescent-Player-Free-1.0.0-macOS-universal.zip"
-FREE_SHA256 = "f0da79ba2373dcb0d64a99fa7c669e18d0129150c6874091f2cf5368c66d0b05"
+FREE_ZIP = "downloads/Cyanescent-Player-free-1.0.0-build-2-d10b51c-macOS-universal-FINAL.zip"
+FREE_SHA256 = "5802855cd26564598fccecd40ba6baf24c9766ac6c12eab9bcd2253caa954664"
 
 errors, warnings = [], []
 
@@ -122,15 +134,14 @@ for path in PAGES:
             if re.search(pattern, href):
                 errors.append(f"{path.relative_to(ROOT)}: retired or development link {href}")
 
-# 3. Pro Video must have no checkout or download
+# 3. Paid editions are never linked as files: only via the approved checkout or HD Worlds page
 for path, p in parsed.items():
     for href, stack in p.links:
-        if any(s in ("pro-video", "ed-video") for s in stack):
-            if href.startswith("http") or re.search(r"\.(zip|dmg|pkg)$", href):
-                errors.append(f"{path.relative_to(ROOT)}: Pro Video has an outbound/download link {href}")
-    text = path.read_text(encoding="utf-8")
-    if re.search(r"Pro-?Video[^\"]*\.(zip|dmg)", text, re.I) and "hd-worlds" not in path.name:
-        errors.append(f"{path.relative_to(ROOT)}: a Pro Video download filename is linked or named")
+        if re.search(r"(pro|pro-video|hd-world).*\.(zip|dmg|pkg)$", href, re.I):
+            errors.append(f"{path.relative_to(ROOT)}: direct link to a paid or HD World archive {href}")
+        if any(s in ("pro-video", "ed-video", "buy-pro-video") for s in stack) and href.startswith("http"):
+            if href not in (CHECKOUT["pro-video"], HD_WORLDS_PAGE):
+                errors.append(f"{path.relative_to(ROOT)}: unexpected outbound link in Pro Video content {href}")
 
 # 4. Misleading licensing language (approved EULA wording is exempt)
 MISLEADING = [
@@ -149,17 +160,19 @@ for path in PAGES:
 # 5. Edition facts on the landing page
 index = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", (ROOT / "index.html").read_text(encoding="utf-8")))
 FACTS = [
-    "18 curated", "75 real-time visual presets", "77 core presets", "Up to 83 presets",
+    "18 curated", "75 music-responsive presets", "77 core music-responsive presets", "Up to 83 presets",
     "$5", "$15", "$30", "up to 1080p", "up to 4K", "macOS 12 or later", "macOS 14.2",
-    "Not yet available to buy", FREE_SHA256, "7,661,960 bytes", "Buy once.", "Create forever.",
-    "1eb6609b6228d542360d22f4408cecd97f6f034bf3558f3ef9ebfd6b31b39c61", "20,350,786 bytes",
-    "Launch price $5 — regular price $15", "Lemon Squeezy", "Coming soon",
+    FREE_SHA256, "7,739,869 bytes", "Buy once.", "Create forever.",
+    PRO_SHA256, "20,407,080 bytes", PRO_VIDEO_SHA256, "1,974,722,085 bytes",
+    "Launch price $5 — regular price $15", "Lemon Squeezy", "Get Pro Video — $30",
+    "Adaptive Synesthesia Engine", "Alien Visits", "HD Worlds download page",
     "Milkrunner", "Psy-Roller",
 ]
 for fact in FACTS:
     if fact.lower() not in index.lower():
         errors.append(f"index.html: expected fact missing: {fact!r}")
-for wrong in ("Pro Video — $5", "Get Pro Video", "Buy Pro Video", "Fungal Edition download"):
+for wrong in ("Pro Video — $5", "Fungal Edition download", "Coming soon", "not yet available",
+              "when released", "will follow Free and Pro", "next edition", "4K transition", "4K video transition"):
     if wrong.lower() in index.lower():
         errors.append(f"index.html: unexpected text {wrong!r}")
 
@@ -193,34 +206,40 @@ for f in ROOT.rglob("*"):
     if f.stat().st_size > 100_000_000:
         errors.append(f"{f.relative_to(ROOT)} exceeds GitHub's 100 MB file limit")
 
-# 5d. Pro checkout link: live Lemon Squeezy hosted checkout only
-pro_btn = re.search(r'<a id="pro-checkout"[^>]*>', raw_index)
-if not pro_btn:
-    errors.append("index.html: #pro-checkout button missing")
-else:
-    tag = pro_btn.group(0)
-    href = re.search(r'href="([^"]+)"', tag)
-    if 'data-checkout="test"' in tag:
-        (errors if LAUNCH else warnings).append("index.html: Pro button uses a TEST checkout link; never deploy it")
-    if href and not re.match(r"^https://cyanescent\.lemonsqueezy\.com/(checkout/)?buy/[0-9a-f-]{36}/?$", href.group(1)):
-        errors.append(f"index.html: unexpected Pro checkout URL {href.group(1)}")
-    if STAGE == "precommerce":
-        if href or 'aria-disabled="true"' not in tag or 'data-launch-pending="pro-checkout"' not in tag:
-            errors.append("precommerce: the Pro checkout must be deliberately disabled (tools/set-checkout-url.py --reset)")
-    if STAGE == "commercial":
-        if not href:
-            errors.append("commercial: Pro checkout URL not set (tools/set-checkout-url.py)")
-        verified = _arg("--purchase-verified")
-        if verified != PRO_SHA256:
-            errors.append("commercial: pass --purchase-verified <sha256 of the ZIP downloaded from a real purchase>; "
-                          "it must equal the approved Pro SHA-256")
+# 5d. Checkout links: only the two approved live hosted checkouts, on matching buttons
+for path in PAGES:
+    raw = path.read_text(encoding="utf-8")
+    for tag in re.findall(r"<a\b[^>]*>", raw):
+        href = re.search(r'href="([^"]+)"', tag)
+        kind = re.search(r'data-checkout="([^"]+)"', tag)
+        if kind and kind.group(1) == "test":
+            errors.append(f"{path.relative_to(ROOT)}: TEST checkout link; never deploy it")
+        if href and "lemonsqueezy.com" in href.group(1):
+            if href.group(1) not in CHECKOUT.values():
+                errors.append(f"{path.relative_to(ROOT)}: unapproved checkout URL {href.group(1)}")
+            elif not kind or CHECKOUT.get(kind.group(1)) != href.group(1):
+                errors.append(f"{path.relative_to(ROOT)}: checkout URL on a button for the wrong product: {tag[:90]}")
+        if kind and kind.group(1) in CHECKOUT and (not href or href.group(1) != CHECKOUT[kind.group(1)]):
+            errors.append(f"{path.relative_to(ROOT)}: {kind.group(1)} button without its live checkout URL")
+for label, kind in (("Get Pro — $5", "pro"), ("Get Pro Video — $30", "pro-video")):
+    for m in re.finditer(r"<a\b([^>]*)>([^<]*)</a>", raw_index):
+        if m.group(2).strip() == label and f'href="{CHECKOUT[kind]}"' not in m.group(1):
+            errors.append(f"index.html: '{label}' button is not linked to its live checkout")
+    if raw_index.count(f'href="{CHECKOUT[kind]}"') == 0:
+        errors.append(f"index.html: no {kind} checkout link")
+if STAGE == "commercial":
+    for flag, kind, sha in (("--purchase-verified", "Pro", PRO_SHA256),
+                            ("--purchase-verified-pro-video", "Pro Video", PRO_VIDEO_SHA256)):
+        given = _arg(flag)
+        if given is None:
+            warnings.append(f"commercial: {kind} end-to-end purchase not yet verified ({flag} <sha256>)")
+        elif given != sha:
+            errors.append(f"commercial: {flag} does not match the released {kind} SHA-256")
 
 # 6. Launch-pending controls
 for path, p in parsed.items():
     for name in p.pending:
         msg = f"{path.relative_to(ROOT)}: launch-pending control '{name}'"
-        if STAGE == "precommerce" and name in PRECOMMERCE_PENDING:
-            continue  # Pro checkout is deliberately off before commerce launch
         (errors if LAUNCH else warnings).append(msg)
 
 # 7. Psy-Roller and its shared assets unchanged from main

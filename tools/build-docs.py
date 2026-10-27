@@ -24,13 +24,22 @@ PAGES = [
     ("quick-start.html", "Quick Start", "Quick Start", ["quick-start.md"]),
     ("licence.html", "Licence (EULA)", "End-user licence agreement", ["EULA.md"]),
     ("third-party-notices.html", "Third-party notices", "Third-party notices", ["third-party-notices.md"]),
-    ("hd-worlds.html", "HD World installation", "HD World installation", ["hd-world-installation.md", "hd-worlds-cli.md"]),
+    ("hd-worlds.html", "HD World installation", "HD World installation", ["optional-hd-worlds.md"]),
 ]
+
+# Site-only notes shown above a document (never inside the approved text).
+PREFACE = {
+    "hd-worlds.html": (
+        '<p class="doc-meta">Download the six optional HD World installers from the '
+        '<a href="https://132.145.31.40.sslip.io/downloads/cyanescent/hd-worlds.html" rel="noopener">'
+        'HD Worlds download page</a>. They are free for Pro Video owners.</p>'
+    ),
+}
 
 # Cross-document links inside the approved Markdown, mapped to site pages.
 LINKS = {
     "V1_HD_WORLD_INSTALLATION.md": "hd-worlds.html",
-    "V1_HD_WORLDS.md": "hd-worlds.html#v1-optional-hd-worlds-command-line-fallback",
+    "V1_HD_WORLDS.md": "hd-worlds.html",
     "https://cyanescent-dev.github.io": "../",
 }
 
@@ -214,6 +223,7 @@ def main():
             for f, label, _t, _s in PAGES
         )
         body = "\n".join(render((SOURCE / s).read_text(encoding="utf-8")) for s in sources)
+        body = PREFACE.get(file, "") + body
         page = TEMPLATE.format(title=html.escape(title), file=file, docnav=docnav, body=body)
         (OUT / file).write_text(page, encoding="utf-8")
         print(f"wrote docs/{file}")

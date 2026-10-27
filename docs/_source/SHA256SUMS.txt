@@ -1,5 +1,4 @@
 713407b946c51493a2268cab82d618affb7a0b85c636638d547be1add69a79a5  docs/_source/EULA.md
-923260c90acd500018ac8af7cd4c75de687708a7397875591b88cf1a4eb34322  docs/_source/hd-world-installation.md
-496c34c02a1654d49cc426417c76595eeee59750a9af13aeb49c1f7a9eb59b2c  docs/_source/hd-worlds-cli.md
+18f5d40bb4dc0d086527ae1dd383fc3750196f0a6c58c0c72f1b7acf96779104  docs/_source/optional-hd-worlds.md
 9ce0ed185f00ec17db4f4a1a6ded5be0a608048704c89ad4b2d221ccf4d81dd6  docs/_source/quick-start.md
 c08fb1b62ce4adbc4698090bf0b9a98d1a77fbab8529842cfd78c7ce33ceef44  docs/_source/third-party-notices.md
