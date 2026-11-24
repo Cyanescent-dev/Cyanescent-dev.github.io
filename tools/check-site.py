@@ -186,6 +186,7 @@ for required in (
     "https://github.com/Cyanescent-dev/milkrunner/releases/download/milk-runner-visuals/Milk.Runner.Visualizer.zip",
     "https://github.com/Cyanescent-dev/Cyanescent-dev.github.io/releases/download/psy-roller-v1.0.1/Psy-Roller-1.0.1-VST3.zip",
     'href="psy-roller/"',
+    "https://github.com/Cyanescent-dev/Cyanescent-dev.github.io/releases/download/cyanescent-player-free-v1.0.0/Cyanescent-Player-free-1.0.0-build-2-d10b51c-macOS-universal-FINAL.zip",
 ):
     if required not in raw_index:
         errors.append(f"index.html: companion product link missing: {required}")

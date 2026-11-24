@@ -8,7 +8,7 @@ are free downloads on the separate HD hosting server.
 
 | Edition | File | Bytes | SHA-256 | Delivery |
 |---|---|---:|---|---|
-| Free | `Cyanescent-Player-free-1.0.0-build-2-d10b51c-macOS-universal-FINAL.zip` | 7,739,869 | `5802855cd26564598fccecd40ba6baf24c9766ac6c12eab9bcd2253caa954664` | `downloads/` (this site) |
+| Free | `Cyanescent-Player-free-1.0.0-build-2-d10b51c-macOS-universal-FINAL.zip` | 7,739,869 | `5802855cd26564598fccecd40ba6baf24c9766ac6c12eab9bcd2253caa954664` | GitHub Release `cyanescent-player-free-v1.0.0` (legacy copy kept in `downloads/`) |
 | Pro | `Cyanescent-Player-pro-1.0.0-build-2-d10b51c-macOS-universal-FINAL.zip` | 20,407,080 | `19346048d61960fc50f2518b6877d0abcaad3356daf5851a72e49767c426bf85` | Lemon Squeezy |
 | Pro Video | `Cyanescent-Player-pro-video-1.0.0-build-2-228e245-macOS-universal-FINAL.zip` | 1,974,722,085 | `4dee485499b3e53a5d1a211ffb5cc89b8658be00475bd8e10fb4a8b86c0e5568` | Lemon Squeezy |
 | HD Worlds (6 DMGs) | see the HD release manifest | 0.41–2.53 GB each | hosted SHA256SUMS.txt | https://132.145.31.40.sslip.io/downloads/cyanescent/hd-worlds.html |
